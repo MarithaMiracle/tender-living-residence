@@ -1,16 +1,31 @@
 import { useState } from "react";
 
+const Wave = () => (
+  <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, lineHeight: 0, pointerEvents: "none" }}>
+    <svg viewBox="0 0 1440 80" fill="#fff5f3" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "80px", display: "block" }} preserveAspectRatio="none">
+      <path d="M0,80 C320,24 720,72 1080,28 C1260,8 1380,48 1440,30 L1440,80 Z"/>
+    </svg>
+  </div>
+);
+
 const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
   const [sent, setSent] = useState(false);
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSent(true);
-    setForm({ name: "", email: "", phone: "", subject: "", message: "" });
-    setTimeout(() => setSent(false), 6000);
+    const response = await fetch("https://formspree.io/f/xgodqpkj", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    });
+    if (response.ok) {
+      setSent(true);
+      setForm({ name: "", email: "", phone: "", subject: "", message: "" });
+      setTimeout(() => setSent(false), 6000);
+    }
   };
 
   const inputStyle = {
@@ -25,14 +40,6 @@ const Contact = () => {
     outline: "none",
     boxSizing: "border-box",
   };
-
-  const Wave = () => (
-    <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, lineHeight: 0, pointerEvents: "none" }}>
-      <svg viewBox="0 0 1440 80" fill="#fff5f3" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "80px", display: "block" }} preserveAspectRatio="none">
-        <path d="M0,80 C320,24 720,72 1080,28 C1260,8 1380,48 1440,30 L1440,80 Z"/>
-      </svg>
-    </div>
-  );
 
   return (
     <>
@@ -87,7 +94,7 @@ const Contact = () => {
             </h2>
             {[
               { label: "Phone", value: "0121 798 9039" },
-              { label: "Email", value: "info@tenderliving.co.uk" },
+              { label: "Email", value: "tenderlivingresidence@gmail.com" },
               { label: "Address", value: "Tender Living Residence, United Kingdom" },
               { label: "Office Hours", value: "Monday – Friday: 9:00am – 5:00pm" },
             ].map((item) => (

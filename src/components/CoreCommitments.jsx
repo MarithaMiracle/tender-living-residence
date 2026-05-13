@@ -1,10 +1,10 @@
-const puzzleImg    = "https://www.figma.com/api/mcp/asset/f69451e4-0576-4ee3-9f16-1133fb6e792e";
-const ellipse14    = "https://www.figma.com/api/mcp/asset/3f1f14d5-4e3e-4fde-82c8-828fe7fda97a";
-const ellipse15    = "https://www.figma.com/api/mcp/asset/b0e37145-12a1-44ae-a113-a1c2c31368ad";
-const ellipse16    = "https://www.figma.com/api/mcp/asset/1387944b-9641-40e9-a96f-4a722f58bf2b";
-const shieldIcon   = "https://www.figma.com/api/mcp/asset/48dadb51-a1f6-4fdc-b19c-dbce7b8abea2";
-const peopleIcon   = "https://www.figma.com/api/mcp/asset/426e4025-6d07-4935-acb2-ac12d448bc6e";
-const respectIcon  = "https://www.figma.com/api/mcp/asset/f762c0ca-3092-45e2-9f32-6abdef97be82";
+const puzzleImg    = "/core-commitments-illustration.png";
+const ellipse14    = "/Ellipse 14.png";
+const ellipse15    = "/Ellipse 15.png";
+const ellipse16    = "/Ellipse 16.png";
+const shieldIcon   = "/You-will-be-supported.png";
+const peopleIcon   = "/You-will-be-respected.png";
+const respectIcon  = "/You-will-be-safe.png";
 
 const commitments = [
   {

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const volunteerImg = "https://www.figma.com/api/mcp/asset/13f7ccaa-1776-4cc4-9aaa-e11380eb5e0a";
+const volunteerImg = "/close-up-volunteers-collecting-food 1.png";
 
 const wavePath = "M0,80 C320,24 720,72 1080,28 C1260,8 1380,48 1440,30 L1440,80 Z";
 

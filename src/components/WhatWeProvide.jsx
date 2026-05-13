@@ -95,8 +95,8 @@ const WhatWeProvide = () => {
             <a href="tel:01217989039" style={{ display: "flex", alignItems: "center", gap: "10px", fontFamily: "Inter, sans-serif", fontSize: "clamp(13px, 1vw, 15px)", color: "rgba(255,245,243,0.85)", textDecoration: "none", background: "rgba(255,245,243,0.06)", border: "1px solid rgba(255,245,243,0.12)", borderRadius: "12px", padding: "12px 20px" }}>
               <span style={{ fontSize: "18px" }}>📞</span> 0121 798 9039
             </a>
-            <a href="mailto:info@tlrs.co.uk" style={{ display: "flex", alignItems: "center", gap: "10px", fontFamily: "Inter, sans-serif", fontSize: "clamp(13px, 1vw, 15px)", color: "rgba(255,245,243,0.85)", textDecoration: "none", background: "rgba(255,245,243,0.06)", border: "1px solid rgba(255,245,243,0.12)", borderRadius: "12px", padding: "12px 20px" }}>
-              <span style={{ fontSize: "18px" }}>✉</span> info@tlrs.co.uk
+            <a href="mailto:tenderlivingresidence@gmail.com" style={{ display: "flex", alignItems: "center", gap: "10px", fontFamily: "Inter, sans-serif", fontSize: "clamp(13px, 1vw, 15px)", color: "rgba(255,245,243,0.85)", textDecoration: "none", background: "rgba(255,245,243,0.06)", border: "1px solid rgba(255,245,243,0.12)", borderRadius: "12px", padding: "12px 20px" }}>
+              <span style={{ fontSize: "18px" }}>✉</span> tenderlivingresidence@gmail.com
             </a>
             <Link to="/contact" style={{ display: "inline-block", backgroundColor: "#F06943", color: "#FFF5F3", fontFamily: "Inter, sans-serif", fontWeight: 700, fontSize: "clamp(13px, 1vw, 15px)", padding: "13px 32px", borderRadius: "30px", textDecoration: "none" }}>
               Contact Us →

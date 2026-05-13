@@ -100,10 +100,17 @@ const ApplicationForm = () => {
 
   const setRef = (n, key, val) => set(n, { ...data[n], [key]: val });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    const response = await fetch("https://formspree.io/f/mjglzprr", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    if (response.ok) {
+      setSubmitted(true);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   if (submitted) {
@@ -141,7 +148,12 @@ const ApplicationForm = () => {
       </section>
 
       {/* Form body */}
-      <section style={{ backgroundColor: "#fff5f3", padding: "64px 0 100px" }}>
+      <section style={{ backgroundColor: "#fff5f3", padding: "64px 0 100px", position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, lineHeight: 0, pointerEvents: "none" }}>
+          <svg viewBox="0 0 1440 80" fill="#490652" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "80px", display: "block" }} preserveAspectRatio="none">
+            <path d="M0,80 C320,24 720,72 1080,28 C1260,8 1380,48 1440,30 L1440,80 Z" />
+          </svg>
+        </div>
         <form onSubmit={handleSubmit} className="af-form">
 
           {/* ── POST ── */}

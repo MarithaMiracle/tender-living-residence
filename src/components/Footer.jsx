@@ -64,12 +64,12 @@ const Footer = () => (
       {/* Brand */}
       <div>
         <Link to="/" style={{ lineHeight: 0, display: "inline-block", marginBottom: "20px" }}>
-          <img src="/logo.png" alt="Tender Living Residence" style={{ height: "64px", objectFit: "contain", display: "block" }} />
+          <img src="/logo.png" alt="Tender Living Residence" style={{ height: "64px", objectFit: "contain", display: "block", filter: "invert(1) sepia(1) hue-rotate(-30deg) saturate(2.5) brightness(1.25)" }} />
         </Link>
         <p style={{ fontFamily: "Inter, sans-serif", fontWeight: 600, fontSize: "clamp(15px, 1.2vw, 20px)", color: "rgba(255,245,243,0.85)", lineHeight: 1.6, margin: "0 0 32px", maxWidth: "300px" }}>
           Empowering individuals to grow, thrive, and live independently.
         </p>
-        <div style={{ display: "flex", gap: "10px" }}>
+        {/* <div style={{ display: "flex", gap: "10px" }}>
           {[
             { href: "#", icon: <FacebookIcon />,  label: "Facebook" },
             { href: "#", icon: <InstagramIcon />, label: "Instagram" },
@@ -79,7 +79,7 @@ const Footer = () => (
               {icon}
             </a>
           ))}
-        </div>
+        </div> */}
       </div>
 
       {/* Company */}
@@ -128,7 +128,7 @@ const Footer = () => (
           <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
             <div>
               <p style={contactLabel}>Email</p>
-              <a href="mailto:info@tenderliving.co.uk" style={{ fontFamily: "Inter, sans-serif", fontSize: "15px", color: "#f4a5c6", textDecoration: "none" }}>info@tenderliving.co.uk</a>
+              <a href="mailto:tenderlivingresidence@gmail.com" style={{ fontFamily: "Inter, sans-serif", fontSize: "15px", color: "#f4a5c6", textDecoration: "none" }}>tenderlivingresidence@gmail.com</a>
             </div>
             <div>
               <p style={contactLabel}>Location</p>

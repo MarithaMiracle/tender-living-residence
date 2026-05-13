@@ -1,11 +1,11 @@
-const buildingImg   = "https://www.figma.com/api/mcp/asset/e79136b5-b580-49e2-acec-58a31a2e3675";
-const ellipseCircle = "https://www.figma.com/api/mcp/asset/ce1f2596-813c-4515-86d7-7bc84fb73c5d";
-const healthIcon    = "https://www.figma.com/api/mcp/asset/4687086d-59eb-439b-bc27-7d18884aeec3";
-const supportIcon   = "https://www.figma.com/api/mcp/asset/a21e34f5-a08c-4be0-a86c-812cb50d86e9";
-const shieldIcon    = "https://www.figma.com/api/mcp/asset/ecc60df4-98e4-4d24-a2a3-7cd14255308f";
-const techIcon      = "https://www.figma.com/api/mcp/asset/f4560def-9145-4a15-9206-ae1909e469c4";
-const familyIcon    = "https://www.figma.com/api/mcp/asset/965e66a4-a925-4021-9672-e52590e7d67b";
-const communityIcon = "https://www.figma.com/api/mcp/asset/55248298-7ecc-4310-b7b5-dc9577f209fa";
+const buildingImg   = "/Who-We-Work-With.png";
+const ellipseCircle = "/Ellipse 17.png";
+const healthIcon    = "/Health-professionals.png";
+const supportIcon   = "/Social-workers.png";
+const shieldIcon    = "/Local-authorities.png";
+const techIcon      = "/Individuals-seeking-support.png";
+const familyIcon    = "/Families-and-careers.png";
+const communityIcon = "/Community-organisers.png";
 
 const leftCards = [
   { icon: shieldIcon,    label: "Local authorities\nand commissioners" },

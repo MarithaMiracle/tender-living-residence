@@ -2,36 +2,34 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 
 // ─── Assets (fetched 2026-04-23) ──────────────────────────────────────────────
-const BANNER     = "https://www.figma.com/api/mcp/asset/67fede06-9c15-4560-a5ed-0dad31a858cf";
+const BANNER     = "/Our-services.png";
 
 // Home-based card photos
-const PHOTO_DOMI  = "https://www.figma.com/api/mcp/asset/e2137298-dee4-4336-ac91-f2e14de5dda0";
-const PHOTO_LIVE  = "https://www.figma.com/api/mcp/asset/cb120445-70d6-4db8-b6ef-07b59d6de160";
-const PHOTO_RAPID = "https://www.figma.com/api/mcp/asset/3a86a6f5-69b3-4908-9efd-5e0668a004ca";
-const PHOTO_RESP  = "https://www.figma.com/api/mcp/asset/75df36a3-d166-4728-881d-9335745e6983";
-const PHOTO_CMPLX = "https://www.figma.com/api/mcp/asset/bc88cc8d-5b24-45b5-b434-374f80f9fdae";
+const PHOTO_DOMI  = "/Domiciliary-care(home-based).png";
+const PHOTO_LIVE  = "/Live-in-care(home-based).png";
+const PHOTO_RESP  = "/Respite-care(home-based).png";
+const PHOTO_CMPLX = "/Complex-care(home-based).png";
 
 // Accommodation card photos
-const PHOTO_SULIV = "https://www.figma.com/api/mcp/asset/24c948e4-65d2-4e46-aa87-4fbcfb100a03";
-const PHOTO_SACCO = "https://www.figma.com/api/mcp/asset/1aa6a002-766b-4d20-aac6-692cea3d7d2c";
+const PHOTO_SULIV = "/Supported-living(accommodation-based).png";
+const PHOTO_SACCO = "/Supported-accommodation(accommodation-based).png";
 
 // Crisis photos (kept from prior fetch)
-const PHOTO_EMRG  = "https://www.figma.com/api/mcp/asset/f7481c8c-61fc-4c18-b77f-37a9d0608095";
-const PHOTO_RSPD  = "https://www.figma.com/api/mcp/asset/4acc6b77-da7c-4471-953f-c69d0456b06b";
+const PHOTO_EMRG  = "/social-worker-taking-care-old-woman.jpg";
+const PHOTO_RSPD  = "/Rapid-response(home-based).png";
 
 // Referral section assets
 const REF_BG      = "https://www.figma.com/api/mcp/asset/9e29556e-a422-4324-9aad-f9d40c797879";
-const REF_FG      = "https://www.figma.com/api/mcp/asset/b2b5de98-7215-4abf-93a9-32366d5ccd4e";
-const ELLIPSE24   = "https://www.figma.com/api/mcp/asset/4339d1a7-762a-42c4-a59c-cc1b660f09bb";
-const ICON_SHIELD = "https://www.figma.com/api/mcp/asset/66c528b8-3eba-433f-8b63-5a9e3e2c69a7";
-const ICON_SUPPORT= "https://www.figma.com/api/mcp/asset/520901d4-83b7-4d7b-bd26-9f184e0a628a";
-const ICON_HEALTH = "https://www.figma.com/api/mcp/asset/5f047cb9-a719-4828-8cd8-be291d64ca4b";
-const ICON_FAMILY = "https://www.figma.com/api/mcp/asset/e3825349-9ddf-4692-9ab3-46ce7025a613";
+const REF_FG      = "/Referrals-and-access.png";
+const ELLIPSE24   = "/Ellipse 17 (Orange).png";
+const ICON_SHIELD = "/Local-authorities.png";
+const ICON_SUPPORT= "/Social-workers.png";
+const ICON_HEALTH = "/Health-professionals.png";
+const ICON_FAMILY = "/Families-and-careers.png";
 
 const HOME_BASED = [
   { slug: "domiciliary-care",   title: "Domiciliary Care",  sub: "Visiting care",                desc: "Scheduled visits built around your routine, supporting daily living, personal care, and wellbeing at home.",                              photo: PHOTO_DOMI,  to: "/services/home-based-care/domiciliary-care" },
   { slug: "live-in-care",       title: "Live-In Care",                                            desc: "A dedicated carer living alongside you, providing round-the-clock support and reassurance.",                                               photo: PHOTO_LIVE,  to: "/services/home-based-care/live-in-care" },
-  { slug: "rapid-response",     title: "Rapid Response",                                          desc: "Short-notice cover to stabilise urgent situations and maintain safety at home.",                                                            photo: PHOTO_RAPID, to: "/services/home-based-care/rapid-response" },
   { slug: "home-based-respite", title: "Respite Care",                                            desc: "Planned or emergency breaks for family carers while maintaining full continuity for the person supported.",                                photo: PHOTO_RESP,  to: "/services/home-based-care/home-based-respite" },
   { slug: "complex-care",       title: "Complex Care",      sub: "Where clinically appropriate", desc: "Support for higher needs delivered with specialist staff, professional coordination, and clear care planning.",                             photo: PHOTO_CMPLX, to: "/services/home-based-care/complex-care" },
 ];
@@ -273,7 +271,7 @@ const OurServicesPage = () => {
             {HOME_BASED.map((svc, i) => {
               const flip = i % 2 === 1;
               // mix of top-edge and mid-edge positions — varied but intentional
-              const photoTops = ["16px", "clamp(172px,16vw,196px)", "16px", null, "16px"];
+              const photoTops = ["16px", "clamp(172px,16vw,196px)", "16px", null];
               const rS = i === 3
                 ? { right: "-78px", bottom: "16px", width: "clamp(92px,8.5vw,112px)", height: "clamp(95px,9vw,130px)", zIndex: 3 }
                 : flip
@@ -285,7 +283,6 @@ const OurServicesPage = () => {
                   className={`sr sd${i + 1}`}
                   style={{
                     position: "relative",
-                    ...(i === 4 ? { gridColumn: "1 / -1", justifySelf: "center", width: "calc(50% - clamp(7px,0.8vw,10px))" } : {})
                   }}
                 >
                   <Rect121 flip={flip} style={rS} />
@@ -466,8 +463,8 @@ const OurServicesPage = () => {
               <a href="tel:01217989039" style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", fontWeight: 600, color: "rgba(255,245,243,0.85)", textDecoration: "none", padding: "10px 20px", borderRadius: "100px", border: "1px solid rgba(255,245,243,0.18)", display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(255,245,243,0.06)" }}>
                 📞 0121 798 9039
               </a>
-              <a href="mailto:info@tlrs.co.uk" style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", fontWeight: 600, color: "rgba(255,245,243,0.85)", textDecoration: "none", padding: "10px 20px", borderRadius: "100px", border: "1px solid rgba(255,245,243,0.18)", display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(255,245,243,0.06)" }}>
-                ✉ info@tlrs.co.uk
+              <a href="mailto:tenderlivingresidence@gmail.com" style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", fontWeight: 600, color: "rgba(255,245,243,0.85)", textDecoration: "none", padding: "10px 20px", borderRadius: "100px", border: "1px solid rgba(255,245,243,0.18)", display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(255,245,243,0.06)" }}>
+                ✉ tenderlivingresidence@gmail.com
               </a>
               <Link to="/contact" className="sbtn-o" style={{ display: "inline-block", padding: "11px 28px", borderRadius: "100px", backgroundColor: "#f06943", color: "white", fontFamily: "Inter, sans-serif", fontWeight: 700, fontSize: "14px", textDecoration: "none" }}>
                 Make a Referral →

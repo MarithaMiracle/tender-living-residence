@@ -130,7 +130,12 @@ const Blog = () => {
       </section>
 
       {/* Content */}
-      <section style={{ backgroundColor: "#fff5f3", padding: "64px 0 100px", position: "relative" }}>
+      <section style={{ backgroundColor: "#fff5f3", padding: "64px 0 100px", position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, lineHeight: 0, pointerEvents: "none" }}>
+          <svg viewBox="0 0 1440 80" fill="#490652" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "80px", display: "block" }} preserveAspectRatio="none">
+            <path d="M0,80 C320,24 720,72 1080,28 C1260,8 1380,48 1440,30 L1440,80 Z" />
+          </svg>
+        </div>
         <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 clamp(16px, 4vw, 64px)" }}>
 
           {/* Search + Filter bar */}

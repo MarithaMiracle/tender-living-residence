@@ -1,6 +1,6 @@
 /* ─── Figma CDN assets ──────────────────────────────────────────────── */
-const imgMain   = "https://www.figma.com/api/mcp/asset/ea19f3e3-914f-415a-9033-2bc275247f6a";
-const imgPerson = "https://www.figma.com/api/mcp/asset/0075d217-0cac-487f-a0f9-1b110a8ab86b";
+const imgMain   = "/medium-shot-family-celebrating-birthday-together.webp";
+const imgPerson = "/Caregiver-person.png";
 
 /* ─────────────────────────────────────────────────────────────────────
    GRAYSCALE BACKGROUND
@@ -277,9 +277,9 @@ const AboutPage = () => (
           Our services are built around three core commitments:
         </p>
         {[
-          { title:"You will be safe",             desc:"We prioritise physical, emotional, psychological, and cultural safety in all care settings." },
-          { title:"You will be respected",        desc:"We value individuality, personal choice, background, and identity in every aspect of care." },
-          { title:"You will be supported to grow",desc:"We actively support independence, confidence, and progress, whether care is short-term, ongoing, or transitional." },
+          { title:"You will be safe:",             desc:"We prioritise physical, emotional, psychological, and cultural safety in all care settings." },
+          { title:"You will be respected:",        desc:"We value individuality, personal choice, background, and identity in every aspect of care." },
+          { title:"You will be supported to grow:",desc:"We actively support independence, confidence, and progress, whether care is short-term, ongoing, or transitional." },
         ].map((c) => (
           <p key={c.title} style={{ ...txt, marginBottom:16 }}>
             <strong style={{ fontWeight:800 }}>{c.title}</strong>{"   "}{c.desc}

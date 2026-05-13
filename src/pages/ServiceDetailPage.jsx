@@ -29,33 +29,23 @@ const SectionDivider = ({ title }) => (
 );
 
 // ─── Icon item: circle + optional icon overlay + title + optional subtitle ────
-const IconItem = ({ circleImg, circleSize, icon, title, subtitle, titleColor = "#888" }) => (
-  <div style={{ display: "flex", flexDirection: "column" }}>
+const IconItem = ({ circleImg, icon, title, subtitle, titleColor = "#888" }) => (
+  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
     {/* Circle with icon */}
-    <div style={{ position: "relative", width: circleSize, height: circleSize }}>
-      <img src={circleImg} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "contain" }} />
+    <div style={{ position: "relative", width: "84px", height: "84px" }}>
+      <img src={circleImg} alt="" style={{ width: "100%", height: "100%", display: "block" }} />
       {icon && (
-        <img
-          src={icon}
-          alt=""
-          style={{
-            position:  "absolute",
-            inset:     `${Math.round(circleSize * 0.16)}px`,
-            width:     `${Math.round(circleSize * 0.68)}px`,
-            height:    `${Math.round(circleSize * 0.68)}px`,
-            objectFit: "contain",
-          }}
-        />
+        <img src={icon} alt={title} style={{ position: "absolute", inset: 0, margin: "auto", width: "52%", height: "52%", objectFit: "contain" }} />
       )}
     </div>
     {/* Title */}
     <p style={{
-      fontFamily: "Inter, sans-serif",
-      fontWeight: 500,
-      fontSize:   circleSize >= 200 ? "clamp(14px, 1.4vw, 22px)" : "clamp(12px, 1vw, 17px)",
+      fontFamily: "Poppins, sans-serif",
+      fontWeight: 600,
+      fontSize:   "clamp(13px, 1.1vw, 17px)",
       color:      titleColor,
-      margin:     "clamp(10px, 1.2vw, 18px) 0 0",
-      lineHeight: 1.2,
+      margin:     "16px 0 0",
+      lineHeight: 1.3,
     }}>
       {title}
     </p>
@@ -66,7 +56,7 @@ const IconItem = ({ circleImg, circleSize, icon, title, subtitle, titleColor = "
         fontWeight: 400,
         fontSize:   "clamp(11px, 0.9vw, 15px)",
         color:      "#888",
-        margin:     "5px 0 0",
+        margin:     "4px 0 0",
         lineHeight: 1.4,
       }}>
         {subtitle}
@@ -78,23 +68,24 @@ const IconItem = ({ circleImg, circleSize, icon, title, subtitle, titleColor = "
 // ─── 3-column grid ────────────────────────────────────────────────────────────
 const Grid3 = ({ section }) => (
   <div style={{
-    display:             "grid",
-    gridTemplateColumns: "repeat(auto-fill, minmax(clamp(160px, 18vw, 240px), 1fr))",
-    gap:                 "clamp(32px, 4vw, 64px) clamp(16px, 2.5vw, 40px)",
-    maxWidth:            "1200px",
-    margin:              "clamp(40px, 4vw, 64px) auto 0",
-    padding:             "0 clamp(32px, 6%, 120px)",
+    display:             "flex",
+    flexWrap:            "wrap",
+    justifyContent:      "center",
+    gap:                 "32px 24px",
+    maxWidth:            "1000px",
+    margin:              "40px auto 0",
+    padding:             "0 32px",
   }}>
     {section.items.map((item, i) => (
-      <IconItem
-        key={i}
-        circleImg={section.circleImg}
-        circleSize={section.circleSize}
-        icon={item.icon}
-        title={item.title}
-        subtitle={item.subtitle}
-        titleColor={section.itemTitleColor || "#888"}
-      />
+      <div key={i} style={{ flex: "0 0 180px", maxWidth: "180px" }}>
+        <IconItem
+          circleImg={section.circleImg}
+          icon={item.icon}
+          title={item.title}
+          subtitle={item.subtitle}
+          titleColor={section.itemTitleColor || "#4a0c57"}
+        />
+      </div>
     ))}
   </div>
 );
@@ -102,23 +93,24 @@ const Grid3 = ({ section }) => (
 // ─── 4-column quality grid ────────────────────────────────────────────────────
 const Grid4 = ({ section }) => (
   <div style={{
-    display:             "grid",
-    gridTemplateColumns: "repeat(auto-fill, minmax(clamp(140px, 14vw, 200px), 1fr))",
-    gap:                 "clamp(24px, 3vw, 48px) clamp(16px, 2vw, 32px)",
-    maxWidth:            "1200px",
-    margin:              "clamp(40px, 4vw, 64px) auto 0",
-    padding:             "0 clamp(32px, 6%, 120px)",
+    display:             "flex",
+    flexWrap:            "wrap",
+    justifyContent:      "center",
+    gap:                 "24px 20px",
+    maxWidth:            "1000px",
+    margin:              "40px auto 0",
+    padding:             "0 32px",
   }}>
     {section.items.map((item, i) => (
-      <IconItem
-        key={i}
-        circleImg={section.circleImg}
-        circleSize={section.circleSize}
-        icon={item.icon}
-        title={item.title}
-        subtitle={item.subtitle}
-        titleColor={section.itemTitleColor || "#888"}
-      />
+      <div key={i} style={{ flex: "0 0 160px", maxWidth: "160px" }}>
+        <IconItem
+          circleImg={section.circleImg}
+          icon={item.icon}
+          title={item.title}
+          subtitle={item.subtitle}
+          titleColor={section.itemTitleColor || "#4a0c57"}
+        />
+      </div>
     ))}
   </div>
 );
@@ -127,35 +119,26 @@ const Grid4 = ({ section }) => (
 const Grid2IconRight = ({ section }) => (
   <div style={{
     display:             "grid",
-    gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 460px), 1fr))",
-    gap:                 "clamp(28px, 3.5vw, 56px) clamp(20px, 3vw, 48px)",
-    maxWidth:            "1200px",
-    margin:              "clamp(40px, 4vw, 64px) auto 0",
-    padding:             "0 clamp(32px, 6%, 120px)",
+    gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 400px), 1fr))",
+    gap:                 "28px 20px",
+    maxWidth:            "1000px",
+    margin:              "40px auto 0",
+    padding:             "0 32px",
+    justifyContent:      "center",
   }}>
     {section.items.map((item, i) => (
-      <div key={i} style={{ display: "flex", alignItems: "center", gap: "clamp(16px, 2vw, 32px)" }}>
-        <div style={{ position: "relative", width: section.circleSize, height: section.circleSize, flexShrink: 0 }}>
-          <img src={section.circleImg} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "contain" }} />
+      <div key={i} style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+        <div style={{ position: "relative", width: "84px", height: "84px", flexShrink: 0 }}>
+          <img src={section.circleImg} alt="" style={{ width: "100%", height: "100%", display: "block" }} />
           {item.icon && (
-            <img
-              src={item.icon}
-              alt=""
-              style={{
-                position:  "absolute",
-                inset:     `${Math.round(section.circleSize * 0.16)}px`,
-                width:     `${Math.round(section.circleSize * 0.68)}px`,
-                height:    `${Math.round(section.circleSize * 0.68)}px`,
-                objectFit: "contain",
-              }}
-            />
+            <img src={item.icon} alt={item.title} style={{ position: "absolute", inset: 0, margin: "auto", width: "52%", height: "52%", objectFit: "contain" }} />
           )}
         </div>
         <p style={{
           fontFamily: "Inter, sans-serif",
           fontWeight: 500,
-          fontSize:   "clamp(14px, 1.4vw, 22px)",
-          color:      section.itemTitleColor || "#888",
+          fontSize:   "clamp(14px, 1.3vw, 18px)",
+          color:      section.itemTitleColor || "#4a0c57",
           margin:     0,
           lineHeight: 1.35,
           flex:       1,

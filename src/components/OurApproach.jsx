@@ -1,7 +1,7 @@
-const bgImg         = "https://www.figma.com/api/mcp/asset/7c6dd354-cc77-4fd5-914d-e033625b9a89";
-const personIcon    = "https://www.figma.com/api/mcp/asset/bd6a27b5-76d7-45c4-839d-99c9a61a59ac";
-const safetyIcon    = "https://www.figma.com/api/mcp/asset/61da3c15-7bc3-4050-86da-ed97c94aa554";
-const respectIcon   = "https://www.figma.com/api/mcp/asset/6fd6bedb-b95f-44c5-a4c8-11b59d981dd0";
+const bgImg         = "/Our-approach.png";
+const personIcon    = "/Person-centred-care.png";
+const safetyIcon    = "/Safety-and-consistency.png";
+const respectIcon   = "/Respectful-relationships.png";
 
 const approaches = [
   { icon: personIcon,  title: "Person-centred care",      desc: "Every support plan is built around the individual: their preferences, goals, and needs." },

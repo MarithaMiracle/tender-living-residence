@@ -1,38 +1,38 @@
-const ellipseCircle = "https://www.figma.com/api/mcp/asset/ce1f2596-813c-4515-86d7-7bc84fb73c5d";
+const ellipseCircle = "/Ellipse 17.png";
 
 const supportMethods = [
   {
-    icon: "https://www.figma.com/api/mcp/asset/4687086d-59eb-439b-bc27-7d18884aeec3",
+    icon: "/Local-authorities.png",
     title: "Individual Support Plans",
     desc: "Every young person receives a bespoke support plan co-produced with them, reviewed regularly to reflect their changing needs and goals.",
     link: null,
   },
   {
-    icon: "https://www.figma.com/api/mcp/asset/a21e34f5-a08c-4be0-a86c-812cb50d86e9",
+    icon: "/Social-workers.png",
     title: "Key Worker Relationships",
     desc: "Each person is assigned a dedicated key worker who provides consistency, acts as an advocate, and champions their progress.",
     link: null,
   },
   {
-    icon: "https://www.figma.com/api/mcp/asset/ecc60df4-98e4-4d24-a2a3-7cd14255308f",
+    icon: "/Health-professionals.png",
     title: "Risk Assessment & Management",
     desc: "Regular, dynamic risk assessments ensure we proactively manage challenges and keep everyone safe.",
     link: null,
   },
   {
-    icon: "https://www.figma.com/api/mcp/asset/55248298-7ecc-4310-b7b5-dc9577f209fa",
+    icon: "/Community-organisers.png",
     title: "Multi-Agency Working",
     desc: "We collaborate closely with local authorities, health services, education providers, and the voluntary sector.",
     link: null,
   },
   {
-    icon: "https://www.figma.com/api/mcp/asset/f4560def-9145-4a15-9206-ae1909e469c4",
+    icon: "/Families-and-careers.png",
     title: "Life Skills Development",
     desc: "Structured programmes covering budgeting, cooking, cleaning, digital literacy, and all skills needed for independent living.",
     link: null,
   },
   {
-    icon: "https://www.figma.com/api/mcp/asset/965e66a4-a925-4021-9672-e52590e7d67b",
+    icon: "/Individuals-seeking-support.png",
     title: "Therapeutic Interventions",
     desc: "Access to counselling, therapeutic activities, and trauma-informed approaches woven into daily support.",
     link: null,

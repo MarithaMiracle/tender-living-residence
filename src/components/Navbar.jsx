@@ -128,7 +128,7 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop nav */}
-        <div className="hidden md:flex" style={{ alignItems: "center", gap: "2px", flex: 1, justifyContent: "center" }}>
+        <div className="navbar-desktop-nav" style={{ alignItems: "center", gap: "2px", flex: 1, justifyContent: "center" }}>
           {navLinks.map((link) =>
             link.children ? (
               <div
@@ -267,7 +267,7 @@ const Navbar = () => {
         <div style={{ display: "flex", alignItems: "center", gap: "12px", flexShrink: 0 }}>
           <Link
             to="/work-with-us"
-            className="hidden md:flex"
+            className="navbar-desktop-cta"
             style={{
               alignItems: "center", backgroundColor: "#b33874", color: "white",
               fontFamily: "Inter, sans-serif", fontWeight: 700, fontSize: "14px",
@@ -278,7 +278,7 @@ const Navbar = () => {
           </Link>
 
           <button
-            className="flex flex-col md:hidden"
+            className="navbar-mobile-hamburger"
             onClick={() => setMobileOpen(!mobileOpen)}
             style={{ gap: "5px", padding: "8px", background: "none", border: "none", cursor: "pointer" }}
             aria-label="Toggle menu"
