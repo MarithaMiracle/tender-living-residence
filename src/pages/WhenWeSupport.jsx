@@ -2,13 +2,13 @@ const phases = [
   {
     phase: "Phase 1",
     title: "Referral & Assessment",
-    desc: "We accept referrals from local authorities, social workers, health professionals, and self-referrals. An initial assessment is completed within 48 hours to understand the young person's needs, risks, and goals.",
+    desc: "We accept referrals from local authorities, social workers, health professionals, and self-referrals. An initial assessment is completed within 48 hours to understand the individual's needs, risks, and goals.",
     color: "#490652",
   },
   {
     phase: "Phase 2",
     title: "Placement & Welcome",
-    desc: "Once a placement is agreed, we prepare the environment and support package. The young person is introduced to their key worker, given a full property induction, and their support plan is co-produced within the first two weeks.",
+    desc: "Once a placement is agreed, we prepare the environment and support package. The individual is introduced to their key worker, given a full property induction, and their support plan is co-produced within the first two weeks.",
     color: "#b33874",
   },
   {

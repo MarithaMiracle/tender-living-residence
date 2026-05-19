@@ -132,14 +132,14 @@ const Blog = () => {
       {/* Content */}
       <section style={{ backgroundColor: "#fff5f3", padding: "64px 0 100px", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, lineHeight: 0, pointerEvents: "none" }}>
-          <svg viewBox="0 0 1440 80" fill="#490652" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "80px", display: "block" }} preserveAspectRatio="none">
+          <svg viewBox="0 0 1440 80" fill="#490652" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "80px", display: "block", transform: "translateY(1px)" }} preserveAspectRatio="none">
             <path d="M0,80 C320,24 720,72 1080,28 C1260,8 1380,48 1440,30 L1440,80 Z" />
           </svg>
         </div>
         <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 clamp(16px, 4vw, 64px)" }}>
 
           {/* Search + Filter bar */}
-          <div className="blog-toolbar">
+          <div style={{ display: "flex", alignContent: "flex-start", flexWrap: "wrap", gap: "12px" }}>
             <div style={{ position: "relative", flex: "1 1 280px", maxWidth: 420 }}>
               <svg style={{ position: "absolute", left: 14, top: "50%", transform: "translateY(-50%)", opacity: 0.4 }} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#490652" strokeWidth="2.5" strokeLinecap="round">
                 <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -152,7 +152,7 @@ const Blog = () => {
                 style={{ width: "100%", boxSizing: "border-box", padding: "11px 16px 11px 40px", borderRadius: "30px", border: "1.5px solid #e0d0e6", fontFamily: "Inter, sans-serif", fontSize: "14px", backgroundColor: "white", outline: "none", color: "#490652" }}
               />
             </div>
-            <div className="blog-cats">
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", flex: "1 1 auto" }}>
               {CATEGORIES.map(cat => (
                 <button
                   key={cat}

@@ -3,6 +3,25 @@
 @tailwind utilities;
 body {
     background-color: #FFF5F3;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Grayscale background for About Page */
+
+.grayscale-bg {
+    background-image: url("/medium-shot-family-celebrating-birthday-together.webp"), linear-gradient(#808080, #808080);
+    background-blend-mode: luminosity;
+    background-size: cover, cover;
+    background-position: center, center;
+    background-attachment: fixed, fixed;
+}
+
+@media (max-width: 768px) {
+    .grayscale-bg {
+        background-attachment: scroll, scroll;
+    }
 }
 
 
@@ -652,7 +671,7 @@ img {
 .blog-toolbar {
     display: flex;
     align-items: flex-start;
-    gap: 20px;
+    gap: 16px;
     flex-wrap: wrap;
 }
 
@@ -661,6 +680,16 @@ img {
     flex-wrap: wrap;
     gap: 8px;
     flex: 1 1 auto;
+}
+
+@media (max-width: 580px) {
+    .blog-toolbar {
+        gap: 12px;
+        align-items: stretch;
+    }
+    .blog-cats {
+        gap: 6px;
+    }
 }
 
 .blog-grid {

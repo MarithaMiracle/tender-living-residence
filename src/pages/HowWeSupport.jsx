@@ -4,7 +4,7 @@ const supportMethods = [
   {
     icon: "/Local-authorities.png",
     title: "Individual Support Plans",
-    desc: "Every young person receives a bespoke support plan co-produced with them, reviewed regularly to reflect their changing needs and goals.",
+    desc: "Every individual receives a bespoke support plan co-produced with them, reviewed regularly to reflect their changing needs and goals.",
     link: null,
   },
   {

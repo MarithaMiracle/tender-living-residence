@@ -7,7 +7,7 @@ const wavePath = "M0,80 C320,24 720,72 1080,28 C1260,8 1380,48 1440,30 L1440,80 
 const WaveTop = ({ fill }) => (
   <div style={{ position: "absolute", top: 0, left: 0, right: 0, lineHeight: 0, pointerEvents: "none", zIndex: 2 }}>
     <svg viewBox="0 0 1440 80" fill={fill} xmlns="http://www.w3.org/2000/svg"
-      style={{ width: "100%", height: "80px", display: "block", transform: "scaleY(-1)" }}
+      style={{ width: "100%", height: "80px", display: "block", transform: "scaleY(-1) translateY(1px)" }}
       preserveAspectRatio="none">
       <path d={wavePath}/>
     </svg>
@@ -17,7 +17,7 @@ const WaveTop = ({ fill }) => (
 const WaveBottom = ({ fill }) => (
   <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, lineHeight: 0, pointerEvents: "none", zIndex: 2 }}>
     <svg viewBox="0 0 1440 80" fill={fill} xmlns="http://www.w3.org/2000/svg"
-      style={{ width: "100%", height: "80px", display: "block" }}
+      style={{ width: "100%", height: "80px", display: "block", transform: "translateY(1px)" }}
       preserveAspectRatio="none">
       <path d={wavePath}/>
     </svg>
@@ -47,7 +47,7 @@ const About = () => {
             </h2>
             <div>
               <p style={{ fontFamily: "Inter, sans-serif", fontWeight: 400, fontSize: "clamp(16px, 1.4vw, 20px)", color: "#b33874", lineHeight: 1.75, marginBottom: "18px" }}>
-                Tender Living Residence is a warm, dependable, and professional care provider offering domiciliary care, supported living, and supported accommodation services delivered to high professional standards.
+                Tender Living Residence is a warm, dependable, and professional care provider offering home care, supported living, and supported accommodation services delivered to high professional standards.
               </p>
               <p style={{ fontFamily: "Inter, sans-serif", fontWeight: 400, fontSize: "clamp(16px, 1.4vw, 20px)", color: "#b33874", lineHeight: 1.75, marginBottom: "18px" }}>
                 We work with people experiencing change, vulnerability, or additional support needs, providing care in their own homes or within supported accommodation settings.

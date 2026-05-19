@@ -463,8 +463,8 @@ const OurServicesPage = () => {
               <a href="tel:01217989039" style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", fontWeight: 600, color: "rgba(255,245,243,0.85)", textDecoration: "none", padding: "10px 20px", borderRadius: "100px", border: "1px solid rgba(255,245,243,0.18)", display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(255,245,243,0.06)" }}>
                 📞 0121 798 9039
               </a>
-              <a href="mailto:tenderlivingresidence@gmail.com" style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", fontWeight: 600, color: "rgba(255,245,243,0.85)", textDecoration: "none", padding: "10px 20px", borderRadius: "100px", border: "1px solid rgba(255,245,243,0.18)", display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(255,245,243,0.06)" }}>
-                ✉ tenderlivingresidence@gmail.com
+              <a href="mailto:info@tlrs.co.uk" style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", fontWeight: 600, color: "rgba(255,245,243,0.85)", textDecoration: "none", padding: "10px 20px", borderRadius: "100px", border: "1px solid rgba(255,245,243,0.18)", display: "inline-flex", alignItems: "center", gap: "8px", background: "rgba(255,245,243,0.06)" }}>
+                ✉ info@tlrs.co.uk
               </a>
               <Link to="/contact" className="sbtn-o" style={{ display: "inline-block", padding: "11px 28px", borderRadius: "100px", backgroundColor: "#f06943", color: "white", fontFamily: "Inter, sans-serif", fontWeight: 700, fontSize: "14px", textDecoration: "none" }}>
                 Make a Referral →

@@ -133,7 +133,7 @@ const AboutPage = () => (
 
       {/* WaveTop: hero gradient drips into the grayscale section */}
       <div style={{ position: "absolute", top: 0, left: 0, right: 0, lineHeight: 0, pointerEvents: "none", zIndex: 2 }}>
-        <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "80px", display: "block", transform: "scaleY(-1)" }} preserveAspectRatio="none">
+        <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "80px", display: "block", transform: "scaleY(-1) translateY(1px)" }} preserveAspectRatio="none">
           <defs>
             <linearGradient id="heroGrad" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%"   stopColor="#f87171" />
@@ -381,7 +381,7 @@ const AboutPage = () => (
 
       {/* Wave into footer */}
       <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, lineHeight: 0, pointerEvents: "none" }}>
-        <svg viewBox="0 0 1440 80" fill="#490652" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "80px", display: "block" }} preserveAspectRatio="none">
+        <svg viewBox="0 0 1440 80" fill="#490652" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "80px", display: "block", transform: "translateY(1px)" }} preserveAspectRatio="none">
           <path d="M0,80 C320,24 720,72 1080,28 C1260,8 1380,48 1440,30 L1440,80 Z"/>
         </svg>
       </div>

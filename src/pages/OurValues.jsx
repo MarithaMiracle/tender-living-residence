@@ -1,7 +1,7 @@
 const values = [
   {
     title: "Empowerment",
-    desc: "We believe in unlocking potential. Every young person has strengths, and we help them discover and use them.",
+    desc: "We believe in unlocking potential. Every individual has strengths, and we help them discover and use them.",
     color: "#490652",
   },
   {
@@ -26,12 +26,12 @@ const values = [
   },
   {
     title: "Inclusion",
-    desc: "We celebrate diversity and ensure every young person feels valued, seen, and included.",
+    desc: "We celebrate diversity and ensure every individual feels valued, seen, and included.",
     color: "#b33874",
   },
   {
     title: "Growth",
-    desc: "We are committed to continuous improvement, both for the young people we support and as an organisation.",
+    desc: "We are committed to continuous improvement, both for the individuals we support and as an organisation.",
     color: "#490652",
   },
   {

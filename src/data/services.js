@@ -247,7 +247,7 @@ export const serviceGroups = [
                 description: "Our supported accommodation service provides a safe, staffed environment where individuals can develop independence, build life skills, and work toward personal goals.",
                 points: [
                     "Safe, staffed accommodation with 24-hour cover where required",
-                    "Structured support for young people and adults",
+                    "Structured support for elderly people",
                     "Life skills development: cooking, budgeting, self-management",
                     "Education, employment, and vocational pathway support",
                     "Robust safeguarding and risk management frameworks",

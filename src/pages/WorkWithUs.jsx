@@ -4,7 +4,7 @@ const roles = [
   {
     title: "Support Worker",
     type: "Full-time / Part-time",
-    desc: "Provide day-to-day support to young people in our accommodation or in the community, helping them develop life skills and achieve personal goals.",
+    desc: "Provide day-to-day support to individuals (including elderly people) in their homes or in our accommodation, helping them maintain independence and achieve personal goals.",
   },
   {
     title: "Senior Support Worker",
@@ -14,12 +14,7 @@ const roles = [
   {
     title: "Night Support Worker",
     type: "Part-time / Relief",
-    desc: "Provide overnight supervision and support, ensuring young people are safe and settled during evening and night hours.",
-  },
-  {
-    title: "Registered Manager",
-    type: "Full-time",
-    desc: "Lead the operational management of a residential service, ensuring CQC compliance, staff development, and outstanding outcomes for young people.",
+    desc: "Provide overnight supervision and support, ensuring individuals (including elderly people) are safe and settled during evening and night hours.",
   },
 ];
 
@@ -40,7 +35,7 @@ const WorkWithUs = () => {
           Work With Us
         </h1>
         <p style={{ fontFamily: "Inter, sans-serif", fontWeight: 400, fontSize: "clamp(16px, 1.8vw, 22px)", color: "rgba(255,245,243,0.85)", margin: "0 auto", maxWidth: "660px", lineHeight: 1.6 }}>
-          Join a passionate team making a real difference in the lives of young people across the UK.
+          Join a passionate team making a real difference in the lives of individuals (including elderly people) across the UK.
         </p>
         <Wave />
       </section>

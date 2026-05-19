@@ -81,7 +81,7 @@ const Contact = () => {
       {/* Contact content */}
       <section style={{ backgroundColor: "#fff5f3", padding: "80px 0 100px", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, lineHeight: 0, pointerEvents: "none" }}>
-          <svg viewBox="0 0 1440 80" fill="#490652" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "80px", display: "block" }} preserveAspectRatio="none">
+          <svg viewBox="0 0 1440 80" fill="#490652" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "80px", display: "block", transform: "translateY(1px)" }} preserveAspectRatio="none">
             <path d="M0,80 C320,24 720,72 1080,28 C1260,8 1380,48 1440,30 L1440,80 Z"/>
           </svg>
         </div>
@@ -94,7 +94,7 @@ const Contact = () => {
             </h2>
             {[
               { label: "Phone", value: "0121 798 9039" },
-              { label: "Email", value: "tenderlivingresidence@gmail.com" },
+              { label: "Email", value: "info@tlrs.co.uk" },
               { label: "Address", value: "Tender Living Residence, United Kingdom" },
               { label: "Office Hours", value: "Monday – Friday: 9:00am – 5:00pm" },
             ].map((item) => (

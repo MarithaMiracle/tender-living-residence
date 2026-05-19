@@ -1,50 +1,50 @@
 const supportGroups = [
   {
-    title: "Care Leavers",
-    desc: "Young people transitioning out of the care system who need ongoing support to establish independent lives, manage finances, and build social networks.",
-    image: "/accommodation.jpg",
+    title: "Elderly People",
+    desc: "Older adults who need support to maintain independence, stay safe at home, and enjoy a good quality of life.",
+    image: "/home-care.jpg",
     flip: false,
   },
   {
-    title: "Young People with Mental Health Needs",
+    title: "Individuals with Mental Health Needs",
     desc: "Individuals experiencing anxiety, depression, trauma, or other mental health challenges who benefit from structured, compassionate daily support.",
-    image: "/home-care.jpg",
+    image: "/Individuals with mental health needs.jpg",
     flip: true,
   },
   {
-    title: "Young People at Risk of Homelessness",
+    title: "Individuals at Risk of Homelessness",
     desc: "Those facing housing instability or insecurity who need safe accommodation and the skills to sustain long-term tenancies.",
-    image: "/accommodation.jpg",
+    image: "/Individuals with homelessness.jpg",
     flip: false,
   },
   {
-    title: "Young People with Learning Difficulties",
+    title: "Individuals with Learning Difficulties",
     desc: "Individuals who need additional support with daily tasks, communication, and navigating community services.",
-    image: "/home-care.jpg",
+    image: "/Individuals with learning difficulties.jpg",
     flip: true,
   },
   {
-    title: "Young Offenders in Transition",
+    title: "Offenders in Transition",
     desc: "Individuals moving from custodial settings who need structured support to reintegrate and avoid reoffending.",
-    image: "/accommodation.jpg",
+    image: "/Offenders in transition.jpg",
     flip: false,
   },
   {
-    title: "Young Parents",
-    desc: "Young mothers and fathers who need guidance and practical support to provide safe, nurturing environments for their children.",
-    image: "/home-care.jpg",
+    title: "Parents",
+    desc: "Mothers and fathers who need guidance and practical support to provide safe, nurturing environments for their children.",
+    image: "/Parents.jpg",
     flip: true,
   },
   {
-    title: "Unaccompanied Asylum Seeking Children",
-    desc: "Young people who have arrived in the UK alone and need safe housing, consistent support, and help navigating unfamiliar systems.",
-    image: "/accommodation.jpg",
+    title: "Unaccompanied Asylum Seekers",
+    desc: "Individuals who have arrived in the UK alone and need safe housing, consistent support, and help navigating unfamiliar systems.",
+    image: "/Unaccompanied asylum seekers.jpg",
     flip: false,
   },
   {
-    title: "Young People Fleeing Domestic Abuse",
+    title: "Individuals Fleeing Domestic Abuse",
     desc: "Individuals escaping unsafe home environments who need urgent safety, stabilisation, and long-term recovery support.",
-    image: "/home-care.jpg",
+    image: "/Individuals fleeing domestic abuse.jpg",
     flip: true,
   },
 ];
@@ -66,7 +66,7 @@ const WhoWeSupport = () => {
           Who We Support
         </h1>
         <p style={{ fontFamily: "Inter, sans-serif", fontWeight: 400, fontSize: "clamp(16px, 1.8vw, 22px)", color: "rgba(255,245,243,0.85)", margin: "0 auto", maxWidth: "680px", lineHeight: 1.6 }}>
-          We work with young people aged 16–25 from a range of backgrounds and with varied support needs.
+          We work with individuals from a range of backgrounds, with a focus on supporting elderly people.
         </p>
         <Wave />
       </section>
