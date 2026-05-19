@@ -27,7 +27,7 @@ function LoginForm({ onLogin }) {
 
   return (
     <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", backgroundColor: "#fff5f3", padding: "40px 16px" }}>
-      <div style={{ backgroundColor: "white", borderRadius: "24px", padding: "48px 44px", width: "100%", maxWidth: 420, boxShadow: "0 4px 32px rgba(73,6,82,0.1)" }}>
+      <div className="ba-login-box" style={{ backgroundColor: "white", borderRadius: "24px", padding: "48px 44px", width: "100%", maxWidth: 420, boxShadow: "0 4px 32px rgba(73,6,82,0.1)" }}>
         <div style={{ textAlign: "center", marginBottom: 36 }}>
           <h1 style={{ fontFamily: "Poppins, sans-serif", fontWeight: 700, fontSize: "22px", color: "#490652", margin: "0 0 6px" }}>Blog Admin</h1>
           <p style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#888", margin: 0 }}>Sign in to manage posts</p>
@@ -158,8 +158,8 @@ function Dashboard({ onSignOut }) {
     <div style={{ minHeight: "100vh", backgroundColor: "#f8f4fc" }}>
 
       {/* Top bar */}
-      <div style={{ backgroundColor: "#490652", padding: "0 clamp(16px,4vw,40px)" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", height: 64 }}>
+      <div className="ba-topbar" style={{ backgroundColor: "#490652", padding: "0 clamp(16px,4vw,40px)" }}>
+        <div className="ba-topbar-inner" style={{ maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", height: 64 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
             <Link to="/" style={{ display: "inline-block", lineHeight: 0 }}>
               <img src="/logo.png" alt="TLR" style={{ height: 36, objectFit: "contain" }} />
@@ -178,7 +178,7 @@ function Dashboard({ onSignOut }) {
       <div style={{ maxWidth: 1100, margin: "0 auto", padding: "36px clamp(16px,4vw,40px)" }}>
 
         {/* Tabs */}
-        <div style={{ display: "flex", gap: 8, marginBottom: 24 }}>
+        <div className="ba-tabs" style={{ display: "flex", gap: 8, marginBottom: 24 }}>
           <button onClick={() => setActiveTab("posts")}
             style={{ backgroundColor: activeTab === "posts" ? "#490652" : "transparent", color: activeTab === "posts" ? "white" : "#490652", fontFamily: "Inter, sans-serif", fontWeight: 700, fontSize: "13px", padding: "8px 20px", borderRadius: 24, border: activeTab === "posts" ? "none" : "1.5px solid #e0d0e6", cursor: "pointer" }}>
             Posts
@@ -216,7 +216,7 @@ function Dashboard({ onSignOut }) {
             </div>
 
             {/* Table */}
-            <div style={{ backgroundColor: "white", borderRadius: 20, boxShadow: "0 1px 8px rgba(73,6,82,0.06)", overflow: "hidden" }}>
+            <div className="ba-table-container" style={{ backgroundColor: "white", borderRadius: 20, boxShadow: "0 1px 8px rgba(73,6,82,0.06)", overflow: "hidden" }}>
               {loading ? (
                 <div style={{ padding: 48, textAlign: "center" }}>
                   <div className="bp-spinner" style={{ margin: "0 auto" }} />
@@ -227,48 +227,83 @@ function Dashboard({ onSignOut }) {
                   <p style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#888" }}>Click "New Post" to write your first article.</p>
                 </div>
               ) : (
-                <table style={{ width: "100%", borderCollapse: "collapse" }}>
-                  <thead>
-                    <tr style={{ borderBottom: "1px solid #f0e4f7" }}>
-                      {["Title", "Category", "Status", "Date", "Actions"].map(h => (
-                        <th key={h} style={{ fontFamily: "Inter, sans-serif", fontWeight: 700, fontSize: "11px", color: "#aaa", textTransform: "uppercase", letterSpacing: "0.1em", padding: "14px 20px", textAlign: "left" }}>{h}</th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
+                <>
+                  {/* Desktop table */}
+                  <div style={{ display: "block" }}>
+                    <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                      <thead>
+                        <tr style={{ borderBottom: "1px solid #f0e4f7" }}>
+                          {["Title", "Category", "Status", "Date", "Actions"].map(h => (
+                            <th key={h} style={{ fontFamily: "Inter, sans-serif", fontWeight: 700, fontSize: "11px", color: "#aaa", textTransform: "uppercase", letterSpacing: "0.1em", padding: "14px 20px", textAlign: "left" }}>{h}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {posts.map((post, i) => (
+                          <tr key={post.id} style={{ borderBottom: i < posts.length - 1 ? "1px solid #f9f0fc" : "none" }}>
+                            <td style={{ padding: "16px 20px", fontFamily: "Inter, sans-serif", fontWeight: 600, fontSize: "14px", color: "#2b0232", maxWidth: 280 }}>
+                              <div style={{ display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{post.title}</div>
+                            </td>
+                            <td style={{ padding: "16px 20px" }}>
+                              <span style={{ backgroundColor: "#ffe6ee", color: "#b33874", fontFamily: "Inter, sans-serif", fontSize: "11px", fontWeight: 700, padding: "3px 10px", borderRadius: 20, whiteSpace: "nowrap" }}>{post.category}</span>
+                            </td>
+                            <td style={{ padding: "16px 20px" }}>
+                              <button onClick={() => togglePublished(post)}
+                                style={{ backgroundColor: post.published ? "#dcfce7" : "#fef9c3", color: post.published ? "#15803d" : "#92400e", fontFamily: "Inter, sans-serif", fontSize: "11px", fontWeight: 700, padding: "4px 12px", borderRadius: 20, border: "none", cursor: "pointer", textTransform: "uppercase", letterSpacing: "0.05em", whiteSpace: "nowrap" }}>
+                                {post.published ? "● Published" : "○ Draft"}
+                              </button>
+                            </td>
+                            <td style={{ padding: "16px 20px", fontFamily: "Inter, sans-serif", fontSize: "13px", color: "#888", whiteSpace: "nowrap" }}>
+                              {formatDate(post.created_at)}
+                            </td>
+                            <td style={{ padding: "16px 20px" }}>
+                              <div style={{ display: "flex", gap: 8 }}>
+                                <button onClick={() => navigate(`/blog/admin/edit/${post.id}`)}
+                                  style={{ padding: "6px 14px", borderRadius: 20, border: "1.5px solid #e0d0e6", backgroundColor: "transparent", fontFamily: "Inter, sans-serif", fontWeight: 600, fontSize: "12px", color: "#490652", cursor: "pointer" }}>
+                                  Edit
+                                </button>
+                                <button onClick={() => setDeleteTarget(post)}
+                                  style={{ padding: "6px 14px", borderRadius: 20, border: "1.5px solid #fecdd3", backgroundColor: "transparent", fontFamily: "Inter, sans-serif", fontWeight: 600, fontSize: "12px", color: "#e53e3e", cursor: "pointer" }}>
+                                  Delete
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                  {/* Mobile cards */}
+                  <div style={{ display: "none" }}>
                     {posts.map((post, i) => (
-                      <tr key={post.id} style={{ borderBottom: i < posts.length - 1 ? "1px solid #f9f0fc" : "none" }}>
-                        <td style={{ padding: "16px 20px", fontFamily: "Inter, sans-serif", fontWeight: 600, fontSize: "14px", color: "#2b0232", maxWidth: 280 }}>
-                          <div style={{ display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>{post.title}</div>
-                        </td>
-                        <td style={{ padding: "16px 20px" }}>
-                          <span style={{ backgroundColor: "#ffe6ee", color: "#b33874", fontFamily: "Inter, sans-serif", fontSize: "11px", fontWeight: 700, padding: "3px 10px", borderRadius: 20, whiteSpace: "nowrap" }}>{post.category}</span>
-                        </td>
-                        <td style={{ padding: "16px 20px" }}>
+                      <div key={post.id} style={{ borderBottom: i < posts.length - 1 ? "1px solid #f9f0fc" : "none", padding: "20px" }}>
+                        <div style={{ marginBottom: "12px" }}>
+                          <h3 style={{ fontFamily: "Inter, sans-serif", fontWeight: 600, fontSize: "16px", color: "#2b0232", margin: "0 0 8px" }}>{post.title}</h3>
+                          <div style={{ display: "flex", alignItems: "center", gap: "12px", flexWrap: "wrap" }}>
+                            <span style={{ backgroundColor: "#ffe6ee", color: "#b33874", fontFamily: "Inter, sans-serif", fontSize: "11px", fontWeight: 700, padding: "3px 10px", borderRadius: 20, whiteSpace: "nowrap" }}>{post.category}</span>
+                            <span style={{ fontFamily: "Inter, sans-serif", fontSize: "13px", color: "#888", whiteSpace: "nowrap" }}>{formatDate(post.created_at)}</span>
+                          </div>
+                        </div>
+                        <div style={{ display: "flex", gap: "8px", marginBottom: "12px" }}>
                           <button onClick={() => togglePublished(post)}
-                            style={{ backgroundColor: post.published ? "#dcfce7" : "#fef9c3", color: post.published ? "#15803d" : "#92400e", fontFamily: "Inter, sans-serif", fontSize: "11px", fontWeight: 700, padding: "4px 12px", borderRadius: 20, border: "none", cursor: "pointer", textTransform: "uppercase", letterSpacing: "0.05em", whiteSpace: "nowrap" }}>
+                            style={{ flex: 1, backgroundColor: post.published ? "#dcfce7" : "#fef9c3", color: post.published ? "#15803d" : "#92400e", fontFamily: "Inter, sans-serif", fontSize: "11px", fontWeight: 700, padding: "8px 12px", borderRadius: 20, border: "none", cursor: "pointer", textTransform: "uppercase", letterSpacing: "0.05em" }}>
                             {post.published ? "● Published" : "○ Draft"}
                           </button>
-                        </td>
-                        <td style={{ padding: "16px 20px", fontFamily: "Inter, sans-serif", fontSize: "13px", color: "#888", whiteSpace: "nowrap" }}>
-                          {formatDate(post.created_at)}
-                        </td>
-                        <td style={{ padding: "16px 20px" }}>
-                          <div style={{ display: "flex", gap: 8 }}>
-                            <button onClick={() => navigate(`/blog/admin/edit/${post.id}`)}
-                              style={{ padding: "6px 14px", borderRadius: 20, border: "1.5px solid #e0d0e6", backgroundColor: "transparent", fontFamily: "Inter, sans-serif", fontWeight: 600, fontSize: "12px", color: "#490652", cursor: "pointer" }}>
-                              Edit
-                            </button>
-                            <button onClick={() => setDeleteTarget(post)}
-                              style={{ padding: "6px 14px", borderRadius: 20, border: "1.5px solid #fecdd3", backgroundColor: "transparent", fontFamily: "Inter, sans-serif", fontWeight: 600, fontSize: "12px", color: "#e53e3e", cursor: "pointer" }}>
-                              Delete
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
+                        </div>
+                        <div style={{ display: "flex", gap: "8px" }}>
+                          <button onClick={() => navigate(`/blog/admin/edit/${post.id}`)}
+                            style={{ flex: 1, padding: "8px 12px", borderRadius: 20, border: "1.5px solid #e0d0e6", backgroundColor: "transparent", fontFamily: "Inter, sans-serif", fontWeight: 600, fontSize: "12px", color: "#490652", cursor: "pointer" }}>
+                            Edit
+                          </button>
+                          <button onClick={() => setDeleteTarget(post)}
+                            style={{ flex: 1, padding: "8px 12px", borderRadius: 20, border: "1.5px solid #fecdd3", backgroundColor: "transparent", fontFamily: "Inter, sans-serif", fontWeight: 600, fontSize: "12px", color: "#e53e3e", cursor: "pointer" }}>
+                            Delete
+                          </button>
+                        </div>
+                      </div>
                     ))}
-                  </tbody>
-                </table>
+                  </div>
+                </>
               )}
             </div>
           </>
