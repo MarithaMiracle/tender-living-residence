@@ -2,16 +2,26 @@
 const imgMain   = "/medium-shot-family-celebrating-birthday-together.webp";
 const imgPerson = "/Caregiver-person.png";
 
+/* Fixed background element for consistent behavior across all devices */
+const FixedBackground = () => (
+  <div style={{
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    backgroundImage: `url(${imgMain}), linear-gradient(#808080, #808080)`,
+    backgroundBlendMode: "luminosity",
+    backgroundSize: "cover, cover",
+    backgroundPosition: "center, center",
+    zIndex: -1000,
+    pointerEvents: "none",
+  }} />
+);
+
 /* ─────────────────────────────────────────────────────────────────────
-   GRAYSCALE BACKGROUND
-   ─ The design uses ONE background image for the whole page.
-   ─ background-blend-mode: luminosity over a gray gradient desaturates
-     the image without touching children (no stacking-context side-effect).
-   ─ background-attachment: fixed keeps the image stationary while the
-     page scrolls → the same photo shows through every gap and section.
-   ─ This is applied to both the outer wrapper (shows in the gaps between
-     sections) AND each SideSection (so mix-blend-multiply has a local
-     backdrop to compose against).
+   GRAYSCALE BACKGROUND (for mix-blend-mode to work correctly)
+   ─ This is only used for SideSection to maintain mix-blend-multiply effect
 ──────────────────────────────────────────────────────────────────────── */
 const grayscaleBg = {
   backgroundImage:    `url(${imgMain}), linear-gradient(#808080, #808080)`,
@@ -104,6 +114,7 @@ const txt = {
 ──────────────────────────────────────────────────────────────────────── */
 const AboutPage = () => (
   <>
+    <FixedBackground />
     {/* ════════════════════════════════════════════════════════════════
         HERO
     ════════════════════════════════════════════════════════════════ */}
@@ -129,7 +140,7 @@ const AboutPage = () => (
     {/* ════════════════════════════════════════════════════════════════
         INTRO — floating cards: photo (left, larger) | plum (right, overlapping)
     ════════════════════════════════════════════════════════════════ */}
-    <div style={{ ...grayscaleBg, position: "relative", overflow: "hidden" }}>
+    <div style={{ position: "relative", overflow: "hidden" }}>
 
       {/* WaveTop: hero gradient drips into the grayscale section */}
       <div style={{ position: "absolute", top: 0, left: 0, right: 0, lineHeight: 0, pointerEvents: "none", zIndex: 2 }}>
@@ -195,10 +206,9 @@ const AboutPage = () => (
 
     {/* ════════════════════════════════════════════════════════════════
         FLOATING SECTIONS WRAPPER
-        Same grayscale fixed background as each SideSection, so the
-        gaps between sections show the same continuous photo.
+        Gaps between sections show the fixed background.
     ════════════════════════════════════════════════════════════════ */}
-    <div style={{ ...grayscaleBg, position: "relative", overflow: "hidden" }}>
+    <div style={{ position: "relative", overflow: "hidden" }}>
 
       {/* gap — photo visible before first card */}
       <div style={{ height: "clamp(40px, 5vw, 80px)" }} />
