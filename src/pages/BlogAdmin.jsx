@@ -35,7 +35,12 @@ function LoginForm({ onLogin }) {
 
   return (
     <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", backgroundColor: "#fff5f3", padding: "40px 16px", position: "relative", overflow: "hidden" }}>
-      <Wave fill="#490652" position="bottom" />
+      {/* Bottom wave like WorkWithUs */}
+      <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, lineHeight: 0, pointerEvents: "none" }}>
+        <svg viewBox="0 0 1440 80" fill="#490652" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "80px", display: "block" }} preserveAspectRatio="none">
+          <path d="M0,80 C320,24 720,72 1080,28 C1260,8 1380,48 1440,30 L1440,80 Z"/>
+        </svg>
+      </div>
       <div className="ba-login-box" style={{ backgroundColor: "white", borderRadius: "24px", padding: "48px 44px", width: "100%", maxWidth: 420, boxShadow: "0 4px 32px rgba(73,6,82,0.1)", position: "relative", zIndex: 1 }}>
         <div style={{ textAlign: "center", marginBottom: 36 }}>
           <h1 style={{ fontFamily: "Poppins, sans-serif", fontWeight: 700, fontSize: "22px", color: "#490652", margin: "0 0 6px" }}>Blog Admin</h1>
@@ -164,7 +169,7 @@ function Dashboard({ onSignOut }) {
   const drafts     = posts.filter(p => !p.published).length;
 
   return (
-    <div style={{ minHeight: "100vh", backgroundColor: "#f8f4fc", position: "relative", overflow: "hidden" }}>
+    <>
       {/* Top section (hero style with wave) */}
       <div style={{ backgroundColor: "#490652", padding: "24px clamp(16px,4vw,40px) 100px", position: "relative", overflow: "hidden" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
@@ -178,15 +183,23 @@ function Dashboard({ onSignOut }) {
             </button>
           </div>
         </div>
-        <Wave fill="#f8f4fc" position="bottom" />
+        {/* Wave like WorkWithUs hero */}
+        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, lineHeight: 0, pointerEvents: "none" }}>
+          <svg viewBox="0 0 1440 80" fill="#f8f4fc" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "80px", display: "block" }} preserveAspectRatio="none">
+            <path d="M0,80 C320,24 720,72 1080,28 C1260,8 1380,48 1440,30 L1440,80 Z"/>
+          </svg>
+        </div>
       </div>
 
-      {/* Bottom wave */}
-      <div style={{ position: "relative" }}>
-        <Wave fill="#490652" position="bottom" />
-      </div>
-
-      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "36px clamp(16px,4vw,40px) 120px", position: "relative", zIndex: 1 }}>
+      {/* Main content */}
+      <div style={{ backgroundColor: "#f8f4fc", padding: "80px 0 100px", position: "relative", overflow: "hidden" }}>
+        {/* Bottom wave like WorkWithUs */}
+        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, lineHeight: 0, pointerEvents: "none" }}>
+          <svg viewBox="0 0 1440 80" fill="#490652" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "80px", display: "block" }} preserveAspectRatio="none">
+            <path d="M0,80 C320,24 720,72 1080,28 C1260,8 1380,48 1440,30 L1440,80 Z"/>
+          </svg>
+        </div>
+        <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 64px" }}>
 
         {/* Tabs */}
         <div className="ba-tabs" style={{ display: "flex", gap: 8, marginBottom: 24 }}>
