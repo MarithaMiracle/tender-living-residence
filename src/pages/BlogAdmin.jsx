@@ -2,6 +2,14 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "../lib/supabase";
 
+const Wave = ({ fill = "#fff5f3", position = "bottom", flipped = false }) => (
+  <div style={{ position: "absolute", [position]: 0, left: 0, right: 0, lineHeight: 0, pointerEvents: "none" }}>
+    <svg viewBox="0 0 1440 80" fill={fill} xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", height: "80px", display: "block", transform: flipped ? "scaleY(-1)" : "none" }} preserveAspectRatio="none">
+      <path d="M0,80 C320,24 720,72 1080,28 C1260,8 1380,48 1440,30 L1440,80 Z"/>
+    </svg>
+  </div>
+);
+
 function formatDate(iso) {
   return new Date(iso).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
 }
@@ -26,8 +34,9 @@ function LoginForm({ onLogin }) {
   };
 
   return (
-    <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", backgroundColor: "#fff5f3", padding: "40px 16px" }}>
-      <div className="ba-login-box" style={{ backgroundColor: "white", borderRadius: "24px", padding: "48px 44px", width: "100%", maxWidth: 420, boxShadow: "0 4px 32px rgba(73,6,82,0.1)" }}>
+    <div style={{ minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", backgroundColor: "#fff5f3", padding: "40px 16px", position: "relative", overflow: "hidden" }}>
+      <Wave fill="#490652" position="bottom" />
+      <div className="ba-login-box" style={{ backgroundColor: "white", borderRadius: "24px", padding: "48px 44px", width: "100%", maxWidth: 420, boxShadow: "0 4px 32px rgba(73,6,82,0.1)", position: "relative", zIndex: 1 }}>
         <div style={{ textAlign: "center", marginBottom: 36 }}>
           <h1 style={{ fontFamily: "Poppins, sans-serif", fontWeight: 700, fontSize: "22px", color: "#490652", margin: "0 0 6px" }}>Blog Admin</h1>
           <p style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#888", margin: 0 }}>Sign in to manage posts</p>
@@ -155,35 +164,37 @@ function Dashboard({ onSignOut }) {
   const drafts     = posts.filter(p => !p.published).length;
 
   return (
-    <div style={{ minHeight: "100vh", backgroundColor: "#f8f4fc" }}>
-
-      {/* Top bar */}
-      <div className="ba-topbar" style={{ backgroundColor: "#490652", padding: "0 clamp(16px,4vw,40px)" }}>
-        <div className="ba-topbar-inner" style={{ maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", height: 64 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-            <Link to="/" style={{ display: "inline-block", lineHeight: 0 }}>
-              <img src="/logo.png" alt="TLR" style={{ height: 36, objectFit: "contain" }} />
-            </Link>
-            <span style={{ fontFamily: "Inter, sans-serif", fontWeight: 700, fontSize: "14px", color: "rgba(255,245,243,0.6)", borderLeft: "1px solid rgba(255,245,243,0.2)", paddingLeft: 20 }}>Blog Admin</span>
+    <div style={{ minHeight: "100vh", backgroundColor: "#f8f4fc", position: "relative", overflow: "hidden" }}>
+      {/* Top section (hero style with wave) */}
+      <div style={{ backgroundColor: "#490652", padding: "24px clamp(16px,4vw,40px) 100px", position: "relative", overflow: "hidden" }}>
+        <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <div className="ba-topbar-left" style={{ display: "flex", alignItems: "center", gap: 20 }}>
+            <span style={{ fontFamily: "Inter, sans-serif", fontWeight: 700, fontSize: "14px", color: "rgba(255,245,243,0.9)" }}>Blog Admin</span>
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-            <Link to="/blog" style={{ fontFamily: "Inter, sans-serif", fontWeight: 600, fontSize: "13px", color: "rgba(255,245,243,0.7)", textDecoration: "none" }}>View Blog ↗</Link>
-            <button onClick={onSignOut} style={{ backgroundColor: "rgba(255,245,243,0.1)", border: "1px solid rgba(255,245,243,0.2)", color: "rgba(255,245,243,0.8)", fontFamily: "Inter, sans-serif", fontWeight: 600, fontSize: "13px", padding: "7px 16px", borderRadius: 20, cursor: "pointer" }}>
+          <div className="ba-topbar-right" style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            <Link to="/blog" className="ba-view-blog-link" style={{ fontFamily: "Inter, sans-serif", fontWeight: 600, fontSize: "13px", color: "rgba(255,245,243,0.7)", textDecoration: "none" }}>View Blog ↗</Link>
+            <button onClick={onSignOut} className="ba-sign-out-btn" style={{ backgroundColor: "rgba(255,245,243,0.1)", border: "1px solid rgba(255,245,243,0.2)", color: "rgba(255,245,243,0.8)", fontFamily: "Inter, sans-serif", fontWeight: 600, fontSize: "13px", padding: "7px 16px", borderRadius: 20, cursor: "pointer" }}>
               Sign Out
             </button>
           </div>
         </div>
+        <Wave fill="#f8f4fc" position="bottom" />
       </div>
 
-      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "36px clamp(16px,4vw,40px)" }}>
+      {/* Bottom wave */}
+      <div style={{ position: "relative" }}>
+        <Wave fill="#490652" position="bottom" />
+      </div>
+
+      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "36px clamp(16px,4vw,40px) 120px", position: "relative", zIndex: 1 }}>
 
         {/* Tabs */}
         <div className="ba-tabs" style={{ display: "flex", gap: 8, marginBottom: 24 }}>
-          <button onClick={() => setActiveTab("posts")}
+          <button onClick={() => setActiveTab("posts")} className="ba-tab-btn"
             style={{ backgroundColor: activeTab === "posts" ? "#490652" : "transparent", color: activeTab === "posts" ? "white" : "#490652", fontFamily: "Inter, sans-serif", fontWeight: 700, fontSize: "13px", padding: "8px 20px", borderRadius: 24, border: activeTab === "posts" ? "none" : "1.5px solid #e0d0e6", cursor: "pointer" }}>
             Posts
           </button>
-          <button onClick={() => setActiveTab("admins")}
+          <button onClick={() => setActiveTab("admins")} className="ba-tab-btn"
             style={{ backgroundColor: activeTab === "admins" ? "#490652" : "transparent", color: activeTab === "admins" ? "white" : "#490652", fontFamily: "Inter, sans-serif", fontWeight: 700, fontSize: "13px", padding: "8px 20px", borderRadius: 24, border: activeTab === "admins" ? "none" : "1.5px solid #e0d0e6", cursor: "pointer" }}>
             Admin Management
           </button>
@@ -193,15 +204,15 @@ function Dashboard({ onSignOut }) {
         {activeTab === "posts" && (
           <>
             {/* Stats row */}
-            <div style={{ display: "flex", gap: 16, marginBottom: 32, flexWrap: "wrap" }}>
+            <div className="ba-stats-row" style={{ display: "flex", gap: 16, marginBottom: 32, flexWrap: "wrap" }}>
               {[
                 { label: "Total Posts", value: posts.length },
                 { label: "Published",   value: published,  color: "#22c55e" },
                 { label: "Drafts",      value: drafts,     color: "#f59e0b" },
               ].map(s => (
-                <div key={s.label} style={{ backgroundColor: "white", borderRadius: 16, padding: "20px 28px", flex: "1 1 140px", boxShadow: "0 1px 8px rgba(73,6,82,0.06)" }}>
+                <div key={s.label} className="ba-stat-card" style={{ backgroundColor: "white", borderRadius: 16, padding: "20px 28px", flex: "1 1 140px", boxShadow: "0 1px 8px rgba(73,6,82,0.06)" }}>
                   <p style={{ fontFamily: "Inter, sans-serif", fontSize: "12px", fontWeight: 700, color: "#aaa", textTransform: "uppercase", letterSpacing: "0.1em", margin: "0 0 6px" }}>{s.label}</p>
-                  <p style={{ fontFamily: "Poppins, sans-serif", fontWeight: 700, fontSize: "28px", color: s.color || "#490652", margin: 0 }}>{s.value}</p>
+                  <p className="ba-stat-value" style={{ fontFamily: "Poppins, sans-serif", fontWeight: 700, fontSize: "28px", color: s.color || "#490652", margin: 0 }}>{s.value}</p>
                 </div>
               ))}
             </div>
@@ -229,7 +240,7 @@ function Dashboard({ onSignOut }) {
               ) : (
                 <>
                   {/* Desktop table */}
-                  <div style={{ display: "block" }}>
+                  <div className="ba-table-desktop" style={{ display: "block" }}>
                     <table style={{ width: "100%", borderCollapse: "collapse" }}>
                       <thead>
                         <tr style={{ borderBottom: "1px solid #f0e4f7" }}>
@@ -274,7 +285,7 @@ function Dashboard({ onSignOut }) {
                     </table>
                   </div>
                   {/* Mobile cards */}
-                  <div style={{ display: "none" }}>
+                  <div className="ba-table-mobile" style={{ display: "none" }}>
                     {posts.map((post, i) => (
                       <div key={post.id} style={{ borderBottom: i < posts.length - 1 ? "1px solid #f9f0fc" : "none", padding: "20px" }}>
                         <div style={{ marginBottom: "12px" }}>
@@ -311,8 +322,8 @@ function Dashboard({ onSignOut }) {
 
         {/* Admins Tab */}
         {activeTab === "admins" && (
-          <div style={{ backgroundColor: "white", borderRadius: 20, boxShadow: "0 1px 8px rgba(73,6,82,0.06)", padding: "32px" }}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 24 }}>
+          <div className="ba-admin-section" style={{ backgroundColor: "white", borderRadius: 20, boxShadow: "0 1px 8px rgba(73,6,82,0.06)", padding: "32px" }}>
+            <div className="ba-admin-header" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 24 }}>
               <h2 style={{ fontFamily: "Poppins, sans-serif", fontWeight: 700, fontSize: "20px", color: "#490652", margin: 0 }}>Admin Management</h2>
               <button onClick={() => setShowAddAdmin(!showAddAdmin)}
                 style={{ backgroundColor: "#490652", color: "white", fontFamily: "Inter, sans-serif", fontWeight: 700, fontSize: "14px", padding: "10px 24px", borderRadius: 30, border: "none", cursor: "pointer" }}>
@@ -321,12 +332,12 @@ function Dashboard({ onSignOut }) {
             </div>
 
             {showAddAdmin && (
-              <form onSubmit={handleAddAdmin} style={{ backgroundColor: "#fff0f6", borderRadius: 16, padding: "24px", marginBottom: 24 }}>
+              <form onSubmit={handleAddAdmin} className="ba-add-admin-form" style={{ backgroundColor: "#fff0f6", borderRadius: 16, padding: "24px", marginBottom: 24 }}>
                 <h3 style={{ fontFamily: "Poppins, sans-serif", fontWeight: 700, fontSize: "16px", color: "#490652", margin: "0 0 16px" }}>Add New Admin</h3>
-                <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-                  <input type="email" required placeholder="admin@example.com" value={newAdminEmail} onChange={e => setNewAdminEmail(e.target.value)}
+                <div className="ba-add-admin-form-inner" style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                  <input type="email" required placeholder="admin@example.com" className="ba-add-admin-input" value={newAdminEmail} onChange={e => setNewAdminEmail(e.target.value)}
                     style={{ flex: "1 1 280px", padding: "11px 14px", borderRadius: 10, border: "1.5px solid #e0d0e6", fontFamily: "Inter, sans-serif", fontSize: "14px", outline: "none" }} />
-                  <button type="submit" disabled={adminLoading}
+                  <button type="submit" disabled={adminLoading} className="ba-add-admin-btn"
                     style={{ backgroundColor: "#490652", color: "white", fontFamily: "Inter, sans-serif", fontWeight: 700, fontSize: "14px", padding: "11px 28px", borderRadius: 30, border: "none", cursor: adminLoading ? "not-allowed" : "pointer", opacity: adminLoading ? 0.7 : 1 }}>
                     {adminLoading ? "Sending..." : "Send Invite"}
                   </button>
@@ -341,6 +352,7 @@ function Dashboard({ onSignOut }) {
             </div>
           </div>
         )}
+        </div>
       </div>
 
       {deleteTarget && <DeleteModal title={deleteTarget.title} onConfirm={deletePost} onCancel={() => setDeleteTarget(null)} />}
@@ -350,7 +362,7 @@ function Dashboard({ onSignOut }) {
           {toast}
         </div>
       )}
-    </div>
+    </>
   );
 }
 

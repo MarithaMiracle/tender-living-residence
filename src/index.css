@@ -824,10 +824,61 @@ img {
     .ba-topbar-inner {
         flex-wrap: wrap;
         gap: 12px;
+        justify-content: space-between;
+    }
+    .ba-topbar-left {
+        gap: 12px !important;
+    }
+    .ba-topbar-right {
+        gap: 8px !important;
+        flex-wrap: wrap;
+    }
+    .ba-view-blog-link {
+        font-size: 12px !important;
+    }
+    .ba-sign-out-btn {
+        padding: 6px 12px !important;
+        font-size: 12px !important;
     }
     /* Adjust tabs for mobile */
     .ba-tabs {
         flex-wrap: wrap;
+    }
+    .ba-tab-btn {
+        flex: 1 1 auto !important;
+        text-align: center !important;
+    }
+    /* Adjust admin management section for mobile */
+    .ba-admin-section {
+        padding: 20px !important;
+    }
+    .ba-admin-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 12px !important;
+    }
+    .ba-add-admin-form {
+        flex-direction: column !important;
+    }
+    .ba-add-admin-input {
+        width: 100% !important;
+    }
+    .ba-add-admin-btn {
+        width: 100% !important;
+    }
+    /* Make table container scrollable as fallback */
+    .ba-table-container {
+        overflow-x: auto;
+    }
+    /* Adjust stats row for mobile */
+    .ba-stats-row {
+        gap: 12px !important;
+    }
+    .ba-stat-card {
+        padding: 16px 20px !important;
+    }
+    .ba-stat-value {
+        font-size: 24px !important;
     }
 }
 
