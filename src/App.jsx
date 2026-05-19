@@ -1,4 +1,5 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, useNavigate, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import AboutPage from "./pages/AboutPage";
@@ -18,6 +19,21 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import BlogAdmin from "./pages/BlogAdmin";
 import BlogEditor from "./pages/BlogEditor";
+
+// Component to handle password reset redirects
+function AuthRedirectHandler() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    // Check if we have an access token in the URL hash (from password reset)
+    if (location.hash.includes("access_token") && location.hash.includes("type=recovery")) {
+      navigate("/blog/admin", { replace: true });
+    }
+  }, [location, navigate]);
+
+  return null;
+}
 
 const router = createBrowserRouter([
   {
@@ -47,7 +63,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <RouterProvider router={router}>
+      <AuthRedirectHandler />
+    </RouterProvider>
+  );
 }
 
 export default App;
