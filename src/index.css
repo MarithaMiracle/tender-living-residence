@@ -18,12 +18,6 @@ body {
     background-attachment: fixed, fixed;
 }
 
-@media (max-width: 768px) {
-    .grayscale-bg {
-        background-attachment: scroll, scroll;
-    }
-}
-
 
 /* ─── Global mobile resets ──────────────────────────────── */
 
