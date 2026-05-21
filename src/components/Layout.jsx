@@ -16,7 +16,7 @@ const Layout = () => (
     <Outlet />
     <Footer />
     {/* CQC Regulated Care Tag - stationary on all pages */}
-    <div style={{
+    <a href="https://www.cqc.org.uk/location/1-23695436535" target="_blank" rel="noopener noreferrer" style={{
       position: "fixed",
       bottom: "80px",
       left: "20px",
@@ -28,11 +28,13 @@ const Layout = () => (
       borderRadius: "100px",
       background: "rgba(73, 6, 82, 0.95)",
       border: "1px solid rgba(240, 105, 67, 0.5)",
-      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)"
+      boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
+      textDecoration: "none",
+      cursor: "pointer"
     }}>
       <span style={{ width: "6px", height: "6px", borderRadius: "50%", backgroundColor: "#f06943", flexShrink: 0 }} />
       <span style={{ fontFamily: "Inter, sans-serif", fontSize: "12px", fontWeight: 600, color: "rgba(255,245,243,0.9)" }}>CQC Regulated Care</span>
-    </div>
+    </a>
   </>
 );
 
