@@ -32,6 +32,7 @@ const HOME_BASED = [
   { slug: "live-in-care",       title: "Live-In Care",                                            desc: "A dedicated carer living alongside you, providing round-the-clock support and reassurance.",                                               photo: PHOTO_LIVE,  to: "/services/home-based-care/live-in-care" },
   { slug: "home-based-respite", title: "Respite Care",                                            desc: "Planned or emergency breaks for family carers while maintaining full continuity for the person supported.",                                photo: PHOTO_RESP,  to: "/services/home-based-care/home-based-respite" },
   { slug: "complex-care",       title: "Complex Care",      sub: "Where clinically appropriate", desc: "Support for higher needs delivered with specialist staff, professional coordination, and clear care planning.",                             photo: PHOTO_CMPLX, to: "/services/home-based-care/complex-care" },
+  { slug: "companionship-care", title: "Companionship Care",                                      desc: "Friendly, reassuring support that promotes emotional wellbeing, connection, and independence tailored to your lifestyle.",               photo: PHOTO_EMRG,  to: "/services/home-based-care/companionship-care" },
 ];
 
 const ACCOMMODATION = [
@@ -271,7 +272,7 @@ const OurServicesPage = () => {
             {HOME_BASED.map((svc, i) => {
               const flip = i % 2 === 1;
               // mix of top-edge and mid-edge positions — varied but intentional
-              const photoTops = ["16px", "clamp(172px,16vw,196px)", "16px", null];
+              const photoTops = ["16px", "clamp(172px,16vw,196px)", "16px", null, "16px"];
               const rS = i === 3
                 ? { right: "-78px", bottom: "16px", width: "clamp(92px,8.5vw,112px)", height: "clamp(95px,9vw,130px)", zIndex: 3 }
                 : flip

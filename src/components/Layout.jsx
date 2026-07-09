@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import Chatbot from "./Chatbot";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -35,6 +36,8 @@ const Layout = () => (
       <span style={{ width: "6px", height: "6px", borderRadius: "50%", backgroundColor: "#f06943", flexShrink: 0 }} />
       <span style={{ fontFamily: "Inter, sans-serif", fontSize: "12px", fontWeight: 600, color: "rgba(255,245,243,0.9)" }}>CQC Regulated Care</span>
     </a>
+    
+    <Chatbot />
   </>
 );
 

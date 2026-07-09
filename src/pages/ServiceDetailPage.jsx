@@ -150,6 +150,28 @@ const Grid2IconRight = ({ section }) => (
   </div>
 );
 
+// ─── Text layout ──────────────────────────────────────────────────────────────
+const TextSection = ({ section }) => (
+  <div style={{
+    maxWidth: "1240px",
+    margin:   "40px auto 0",
+    padding:  "0 clamp(32px, 6%, 120px)",
+  }}>
+    <div style={{
+      fontFamily: "Inter, sans-serif",
+      fontWeight: 400,
+      fontSize:   "clamp(16px, 1.6vw, 26px)",
+      color:      "#000",
+      lineHeight: 1.55,
+      textAlign:  "justify",
+    }}>
+      {(section.text || "").split('\n\n').map((para, i) => (
+        <p key={i} style={{ margin: i === 0 ? 0 : "24px 0 0" }}>{para}</p>
+      ))}
+    </div>
+  </div>
+);
+
 // ─── Page ─────────────────────────────────────────────────────────────────────
 const ServiceDetailPage = () => {
   const { groupSlug, serviceSlug } = useParams();
@@ -213,17 +235,18 @@ const ServiceDetailPage = () => {
       {/* ── Description ──────────────────────────────────────────────────── */}
       <section style={{ backgroundColor: "white", padding: "clamp(48px, 6vw, 88px) 0 0" }}>
         <div style={{ maxWidth: "1240px", margin: "0 auto", padding: "0 clamp(32px, 6%, 120px)" }}>
-          <p style={{
+          <div style={{
             fontFamily: "Inter, sans-serif",
             fontWeight: 400,
             fontSize:   "clamp(16px, 1.6vw, 26px)",
             color:      "#000",
             lineHeight: 1.55,
-            margin:     0,
             textAlign:  "justify",
           }}>
-            {description}
-          </p>
+            {(description || "").split('\n\n').map((para, i) => (
+              <p key={i} style={{ margin: i === 0 ? 0 : "24px 0 0" }}>{para}</p>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -243,6 +266,7 @@ const ServiceDetailPage = () => {
             {section.layout === "grid2-icon-right" && <Grid2IconRight section={section} />}
             {section.layout === "grid3"             && <Grid3 section={section} />}
             {section.layout === "grid4"             && <Grid4 section={section} />}
+            {section.layout === "text"              && <TextSection section={section} />}
           </section>
         );
       })}

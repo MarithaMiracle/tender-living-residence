@@ -28,12 +28,13 @@ const navLinks = [
     children: [
       {
         label: "Home-Based Care",
-        desc: "Domiciliary, live-in, complex & respite care",
+        desc: "Domiciliary, companionship, live-in, complex & respite care",
         services: [
-          { label: "Domiciliary Care", to: "/services/home-based-care/domiciliary-care" },
-          { label: "Live-In Care",     to: "/services/home-based-care/live-in-care" },
-          { label: "Respite Care",     to: "/services/home-based-care/home-based-respite" },
-          { label: "Complex Care",     to: "/services/home-based-care/complex-care" },
+          { label: "Domiciliary Care",   to: "/services/home-based-care/domiciliary-care" },
+          { label: "Companionship Care", to: "/services/home-based-care/companionship-care" },
+          { label: "Live-In Care",       to: "/services/home-based-care/live-in-care" },
+          { label: "Respite Care",       to: "/services/home-based-care/home-based-respite" },
+          { label: "Complex Care",       to: "/services/home-based-care/complex-care" },
         ],
       },
       {
@@ -60,6 +61,7 @@ const navLinks = [
       { label: "Who We Support",  to: "/who-we-support" },
       { label: "How We Support",  to: "/how-we-support" },
       { label: "When We Support", to: "/when-we-support" },
+      { label: "Care Assessment", to: "/assessment" },
     ],
   },
   { label: "Blog",    to: "/blog" },

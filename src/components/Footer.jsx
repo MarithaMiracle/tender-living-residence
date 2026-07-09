@@ -101,8 +101,9 @@ const Footer = () => (
 
         <p style={{ fontFamily: "Inter, sans-serif", fontSize: "10px", fontWeight: 700, color: "rgba(255,245,243,0.38)", textTransform: "uppercase", letterSpacing: "0.1em", margin: "0 0 8px" }}>Home-Based Care</p>
         <Link to="/services/home-based-care/domiciliary-care"   style={footLink}>Domiciliary Care</Link>
-        <Link to="/services/home-based-care/live-in-care"       style={footLink}>Live-in Care</Link>
+        <Link to="/services/home-based-care/live-in-care"       style={footLink}>Live-In Care</Link>
         <Link to="/services/home-based-care/complex-care"       style={footLink}>Complex Care</Link>
+        <Link to="/services/home-based-care/companionship-care" style={footLink}>Companionship Care</Link>
         <Link to="/services/home-based-care/home-based-respite" style={{ ...footLink, marginBottom: "18px" }}>Home-Based Respite</Link>
 
         <p style={{ fontFamily: "Inter, sans-serif", fontSize: "10px", fontWeight: 700, color: "rgba(255,245,243,0.38)", textTransform: "uppercase", letterSpacing: "0.1em", margin: "0 0 8px" }}>Accommodation</p>

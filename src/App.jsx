@@ -11,6 +11,7 @@ import ServiceGroupPage from "./pages/ServiceGroupPage";
 import ServiceDetailPage from "./pages/ServiceDetailPage";
 import Contact from "./pages/Contact";
 import WorkWithUs from "./pages/WorkWithUs";
+import AssessmentPage from "./pages/AssessmentPage";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import CQCRegulated from "./pages/CQCRegulated";
@@ -49,6 +50,7 @@ const router = createBrowserRouter([
       { path: "/services/:groupSlug/:serviceSlug",        element: <ServiceDetailPage /> },
       { path: "/contact",                                 element: <Contact /> },
       { path: "/work-with-us",                            element: <WorkWithUs /> },
+      { path: "/assessment",                              element: <AssessmentPage /> },
       { path: "/privacy-policy",                          element: <PrivacyPolicy /> },
       { path: "/terms-of-service",                        element: <TermsOfService /> },
       { path: "/cqc-regulated",                           element: <CQCRegulated /> },

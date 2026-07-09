@@ -37,7 +37,7 @@ const WhatWeProvide = () => {
                     Home-Based Care
                   </h3>
                   <p style={{ fontFamily: "Inter, sans-serif", fontWeight: 500, fontSize: "clamp(13px, 1.1vw, 16px)", color: "#616161", lineHeight: 1.5, textAlign: "center", marginBottom: "24px", flex: 1 }}>
-                    Domiciliary care (visiting care), live-in care, rapid response, respite support, and complex care where required.
+                    Domiciliary care (visiting care), companionship care, live-in care, rapid response, respite support, and complex care where required.
                   </p>
                   <div style={{ display: "flex", justifyContent: "center" }}>
                     <span style={{ backgroundColor: "#F06943", color: "#FFF5F3", fontFamily: "Inter, sans-serif", fontSize: "12px", fontWeight: 400, padding: "8px 22px", borderRadius: "14px", display: "inline-block" }}>

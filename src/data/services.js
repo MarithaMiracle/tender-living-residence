@@ -189,6 +189,53 @@ export const serviceGroups = [
                     },
                 ],
             },
+
+            // ── Companionship Care ─────────────────────────────────────────────────
+            {
+                slug: "companionship-care",
+                title: "Companionship Care",
+                tagline: "Meaningful Support That Goes Beyond Care",
+                description: "At Tender Living Residence, we understand that care is not only about physical support it is also about emotional wellbeing, connection, and feeling valued. Many individuals may live independently but still experience loneliness, isolation, anxiety, or reduced confidence due to limited social interaction.\n\nOur Companionship Care service is designed to provide friendly, reassuring, and meaningful support tailored to each individual’s lifestyle and preferences. Whether someone would like regular conversations, support attending appointments, social outings, help maintaining hobbies, or simply someone to spend quality time with, our compassionate carers are there to provide comfort, encouragement, and trusted companionship.\n\nWe focus on building genuine relationships that promote emotional wellbeing, confidence, independence, and a better quality of life.",
+                points: [],
+                heroPhoto: "/social-worker-taking-care-old-woman.jpg",
+                sections: [{
+                        heading: "What Our Companionship Care Includes",
+                        layout: "grid3",
+                        circleImg: CC_CIRCLE_208,
+                        itemTitleColor: "#4a0c57",
+                        items: [
+                            { icon: "/Companionship icon.png", title: "Friendly visits and conversations", subtitle: null },
+                            { icon: "/Companionship icon.png", title: "Emotional reassurance and social interaction", subtitle: null },
+                            { icon: "/Support with appointments icon.png", title: "Accompaniment to appointments and outings", subtitle: null },
+                            { icon: "/Companionship icon.png", title: "Support with hobbies and recreational activities", subtitle: null },
+                            { icon: "/Support with appointments icon.png", title: "Assistance with shopping trips and community engagement", subtitle: null },
+                            { icon: "/Companionship icon.png", title: "Help reducing loneliness and isolation", subtitle: null },
+                            { icon: "/Consistency of staff icon.png", title: "Encouragement with daily routines and confidence building", subtitle: null },
+                            { icon: "/Companionship icon.png", title: "Tea-time visits and wellbeing check-ins", subtitle: null },
+                            { icon: "/Care plans icon.png", title: "Flexible companionship tailored to individual preferences", subtitle: null },
+                        ],
+                    },
+                    {
+                        heading: "Who Can Benefit From Companionship Care?",
+                        layout: "grid3",
+                        circleImg: CC_CIRCLE_208,
+                        itemTitleColor: "#4a0c57",
+                        items: [
+                            { icon: "/Older adults icon.png", title: "Older adults living alone", subtitle: null },
+                            { icon: "/Companionship icon.png", title: "Individuals experiencing loneliness or isolation", subtitle: null },
+                            { icon: "/Returning from hospital icon.png", title: "People recovering from illness or hospital discharge", subtitle: null },
+                            { icon: "/Companionship icon.png", title: "Individuals living with anxiety or emotional overwhelm", subtitle: null },
+                            { icon: "/Companionship icon.png", title: "People who would benefit from regular social interaction", subtitle: null },
+                            { icon: "/Families needing overnight icon.png", title: "Families seeking reassurance for loved ones", subtitle: null },
+                        ],
+                    },
+                    {
+                        heading: "Why Families Choose Tender Living Residence",
+                        layout: "text",
+                        text: "At Tender Living Residence, we believe companionship should feel natural, respectful, and genuinely caring. Our carers take the time to understand each person’s interests, routines, personality, and preferences to create meaningful connections built on trust and kindness.\n\nWe do not simply provide visits we provide presence, reassurance, and compassionate support that helps individuals feel heard, valued, and connected."
+                    }
+                ],
+            },
         ],
     },
 
