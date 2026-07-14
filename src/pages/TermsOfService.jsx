@@ -43,7 +43,7 @@ const TermsOfService = () => (
         </Section>
 
         <Section title="2. About Tender Living Residence">
-          <P>Tender Living Residence Ltd is a regulated care provider operating in the United Kingdom. This website is provided for informational purposes and to facilitate contact with our team. It does not constitute medical, legal, or professional advice.</P>
+          <P>Tender Living Residence Ltd is a regulated care provider based at 11 St Paul’s Square, Birmingham, B3 1RB, operating in the United Kingdom. This website is provided for informational purposes and to facilitate contact with our team. It does not constitute medical, legal, or professional advice.</P>
         </Section>
 
         <Section title="3. Use of the Site">

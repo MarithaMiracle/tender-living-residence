@@ -95,7 +95,7 @@ const Contact = () => {
             {[
               { label: "Phone", value: "0121 798 9039" },
               { label: "Email", value: "info@tlrs.co.uk" },
-              { label: "Address", value: "Tender Living Residence, United Kingdom" },
+              { label: "Address", value: "11 St Paul’s Square, Birmingham, B3 1RB" },
               { label: "Office Hours", value: "Monday – Friday: 9:00am – 5:00pm" },
             ].map((item) => (
               <div key={item.label} style={{ marginBottom: "24px" }}>

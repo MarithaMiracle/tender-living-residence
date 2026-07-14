@@ -133,7 +133,7 @@ const Footer = () => (
             </div>
             <div>
               <p style={contactLabel}>Location</p>
-              <p style={{ fontFamily: "Inter, sans-serif", fontSize: "15px", color: "rgba(255,245,243,0.85)", margin: 0 }}>United Kingdom</p>
+              <p style={{ fontFamily: "Inter, sans-serif", fontSize: "15px", color: "rgba(255,245,243,0.85)", margin: 0 }}>11 St Paul’s Square, Birmingham, B3 1RB</p>
             </div>
           </div>
         </div>

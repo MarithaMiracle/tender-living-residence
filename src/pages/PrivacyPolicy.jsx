@@ -38,7 +38,7 @@ const PrivacyPolicy = () => (
       <div style={{ maxWidth: "820px", margin: "0 auto", padding: "0 40px" }}>
 
         <Section title="1. Who We Are">
-          <P>Tender Living Residence Ltd ("we", "us", "our") is a registered care provider based in the United Kingdom. We are committed to protecting the privacy of everyone who interacts with our website and services.</P>
+          <P>Tender Living Residence Ltd ("we", "us", "our") is a registered care provider based at 11 St Paul’s Square, Birmingham, B3 1RB. We are committed to protecting the privacy of everyone who interacts with our website and services.</P>
           <P>If you have any questions about how we handle your data, please contact us at <a href="mailto:info@tlrs.co.uk" style={{ color: "#b33874" }}>info@tlrs.co.uk</a> or call <a href="tel:01217989039" style={{ color: "#b33874" }}>0121 798 9039</a>.</P>
         </Section>
 

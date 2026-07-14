@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 
-const SYSTEM_PROMPT = `You are the official AI assistant for Tender Living Residence. Your tone is compassionate, professional, and helpful. 
+const SYSTEM_PROMPT = `You are Marie, the official AI assistant for Tender Living Residence. Your tone is compassionate, professional, and helpful. 
 You help users understand our services and answer their questions.
 
 Our Services:
@@ -24,7 +24,7 @@ Core Values: Person-centred practice, safety, consistency, respectful relationsh
 Contact Info:
 - Phone: 0121 798 9039
 - Email: info@tlrs.co.uk
-- Address: Tender Living Residence, United Kingdom
+- Address: 11 St Paul’s Square, Birmingham, B3 1RB
 - Office Hours: Monday – Friday: 9:00am – 5:00pm
 
 When users ask for contact details, provide them directly and clearly.
@@ -50,13 +50,30 @@ const QUICK_REPLIES = [
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
+  const [showIntro, setShowIntro] = useState(false);
+  const [isRolling, setIsRolling] = useState(false);
   const [messages, setMessages] = useState([
-    { role: "assistant", content: "Hello! I am the Tender Living Residence assistant. How can I help you today?"
-    }
+    { role: "assistant", content: "Hello! I'm Marie, your Tender Living Residence assistant. How can I help you today?" }
   ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
+
+  // Show intro notification after a delay, then start rolling
+  useEffect(() => {
+    const introTimer = setTimeout(() => {
+      setShowIntro(true);
+    }, 2000);
+
+    const rollTimer = setTimeout(() => {
+      setIsRolling(true);
+    }, 5000);
+
+    return () => {
+      clearTimeout(introTimer);
+      clearTimeout(rollTimer);
+    };
+  }, []);
 
   // Load chat history from localStorage on mount
   useEffect(() => {
@@ -82,9 +99,14 @@ const Chatbot = () => {
   }, [messages, isOpen, isMinimized]);
 
   const resetChat = () => {
-    const newMessage = [{ role: "assistant", content: "Hello! I am the Tender Living Residence assistant. How can I help you today?" }];
+    const newMessage = [{ role: "assistant", content: "Hello! I'm Marie, your Tender Living Residence assistant. How can I help you today?" }];
     setMessages(newMessage);
     localStorage.setItem("tlr_chat_history", JSON.stringify(newMessage));
+  };
+
+  const handleOpen = () => {
+    setIsOpen(true);
+    setShowIntro(false);
   };
 
   const handleQuickReply = async (text) => {
@@ -226,39 +248,64 @@ const Chatbot = () => {
 
   return (
     <>
-      {/* Floating Action Button */}
+      {/* Intro Notification with Explosion Effect */}
+      {showIntro && !isOpen && (
+        <div style={{
+          position: "fixed",
+          bottom: "100px",
+          right: "24px",
+          zIndex: 9998,
+          backgroundColor: "white",
+          borderRadius: "16px",
+          padding: "16px 20px",
+          boxShadow: "0 8px 32px rgba(73, 6, 82, 0.2)",
+          maxWidth: "300px",
+          animation: "explodeIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)",
+        }}>
+          <p style={{ fontFamily: "Inter, sans-serif", fontSize: "14px", color: "#490652", margin: 0 }}>
+            👋 Hi there! I'm Marie. How can I assist you today?
+          </p>
+        </div>
+      )}
+
+      {/* Floating Action Button with Rolling Animation */}
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={handleOpen}
         style={{
           position: "fixed",
           bottom: "24px",
           right: "24px",
           zIndex: 9999,
-          width: "60px",
-          height: "60px",
+          width: "64px",
+          height: "64px",
           borderRadius: "50%",
           backgroundColor: "#490652",
           color: "white",
           border: "none",
-          boxShadow: "0 4px 12px rgba(73, 6, 82, 0.3)",
+          boxShadow: "0 8px 24px rgba(73, 6, 82, 0.3)",
           cursor: "pointer",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          transition: "transform 0.2s ease",
+          transition: "all 0.3s ease",
+          animation: isRolling ? "roll 2s ease-in-out infinite" : (showIntro ? "pulse 2s infinite" : "none"),
         }}
-        onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
-        onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = "scale(1.1)";
+          e.currentTarget.style.boxShadow = "0 12px 32px rgba(73, 6, 82, 0.4)";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = "scale(1)";
+          e.currentTarget.style.boxShadow = "0 8px 24px rgba(73, 6, 82, 0.3)";
+        }}
       >
         {isOpen ? (
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
         ) : (
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-          </svg>
+          <div style={{ fontSize: "28px" }}>💬</div>
         )}
       </button>
 
@@ -273,30 +320,32 @@ const Chatbot = () => {
           height: "550px",
           maxHeight: "80vh",
           backgroundColor: "white",
-          borderRadius: "16px",
-          boxShadow: "0 8px 32px rgba(0, 0, 0, 0.15)",
+          borderRadius: "24px",
+          boxShadow: "0 12px 48px rgba(73, 6, 82, 0.25)",
           display: "flex",
           flexDirection: "column",
           overflow: "hidden",
-          border: "1px solid rgba(73, 6, 82, 0.1)"
+          border: "2px solid rgba(179, 56, 116, 0.2)",
+          animation: "popIn 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)",
         }}>
           {/* Header */}
           <div style={{
             backgroundColor: "#490652",
-            padding: "14px 16px",
+            padding: "18px 20px",
             color: "white",
             display: "flex",
             alignItems: "center",
-            justifyContent: "space-between"
+            justifyContent: "space-between",
+            background: "linear-gradient(135deg, #490652 0%, #6b0a7a 100%)"
           }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-              {/* Avatar */}
-              <div style={{ width: "40px", height: "40px", borderRadius: "50%", backgroundColor: "#f06943", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "18px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+              {/* Simple Icon */}
+              <div style={{ width: "48px", height: "48px", borderRadius: "50%", backgroundColor: "#f06943", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "24px", boxShadow: "0 4px 12px rgba(240, 105, 67, 0.4)" }}>
                 💬
               </div>
               <div>
-                <h3 style={{ margin: 0, fontFamily: "Poppins, sans-serif", fontSize: "16px", fontWeight: 600 }}>Tender Living Assistant</h3>
-                <p style={{ margin: 0, fontFamily: "Inter, sans-serif", fontSize: "12px", color: "rgba(255,255,255,0.8)" }}>Powered by AI</p>
+                <h3 style={{ margin: 0, fontFamily: "Poppins, sans-serif", fontSize: "18px", fontWeight: 600 }}>Marie</h3>
+                <p style={{ margin: 0, fontFamily: "Inter, sans-serif", fontSize: "12px", color: "rgba(255,245,243,0.7)" }}>Tender Living Assistant</p>
               </div>
             </div>
             <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
@@ -454,6 +503,26 @@ const Chatbot = () => {
         @keyframes typing {
           0%, 80%, 100% { transform: scale(0.8); opacity: 0.5; }
           40% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes pulse {
+          0%, 100% { transform: scale(1); box-shadow: 0 8px 24px rgba(73, 6, 82, 0.3); }
+          50% { transform: scale(1.05); box-shadow: 0 12px 32px rgba(73, 6, 82, 0.5); }
+        }
+        @keyframes roll {
+          0% { transform: rotate(0deg) scale(1); }
+          25% { transform: rotate(-10deg) scale(1.05); }
+          50% { transform: rotate(10deg) scale(1.1); }
+          75% { transform: rotate(-10deg) scale(1.05); }
+          100% { transform: rotate(0deg) scale(1); }
+        }
+        @keyframes explodeIn {
+          0% { opacity: 0; transform: scale(0.3) translateX(20px); }
+          60% { transform: scale(1.1) translateX(-5px); }
+          100% { opacity: 1; transform: scale(1) translateX(0); }
+        }
+        @keyframes popIn {
+          0% { opacity: 0; transform: scale(0.8) translateY(20px); }
+          100% { opacity: 1; transform: scale(1) translateY(0); }
         }
       `}</style>
     </>

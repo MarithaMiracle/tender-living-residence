@@ -39,11 +39,11 @@ const values = [
     desc: "We work in partnership with families, professionals, and communities to achieve the best outcomes.",
     color: "#b33874",
   },
-  {
-    title: "Excellence",
-    desc: "We hold ourselves to the highest standards of care, practice, and professional conduct.",
-    color: "#490652",
-  },
+  // {
+  //   title: "Excellence",
+  //   desc: "We hold ourselves to the highest standards of care, practice, and professional conduct.",
+  //   color: "#490652",
+  // },
 ];
 
 const Wave = () => (
