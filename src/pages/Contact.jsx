@@ -93,18 +93,27 @@ const Contact = () => {
               Get In Touch
             </h2>
             {[
-              { label: "Phone", value: "0121 798 9039" },
-              { label: "Email", value: "info@tlrs.co.uk" },
+              { label: "Phone", value: "0121 798 9039", isLink: true, href: "tel:01217989039" },
+              { label: "Email", value: "info@tlrs.co.uk", isLink: true, href: "mailto:info@tlrs.co.uk" },
               { label: "Address", value: "11 St Paul’s Square, Birmingham, B3 1RB" },
+              { label: "LinkedIn", value: "Tender Living Residence", isLink: true, href: "https://www.linkedin.com/company/tender-living-residence/?viewAsMember=true" },
+              { label: "Facebook", value: "Tender Living Residence", isLink: true, href: "https://www.facebook.com/share/18R9nytWu2/?mibextid=wwXIfr" },
+              { label: "Instagram", value: "@tenderlivingresidence", isLink: true, href: "https://www.instagram.com/tenderlivingresidence?igsh=MXNsaHUyenpjazc4YQ%3D%3D&utm_source=qr" },
               { label: "Office Hours", value: "Monday – Friday: 9:00am – 5:00pm" },
             ].map((item) => (
               <div key={item.label} style={{ marginBottom: "24px" }}>
                 <p style={{ fontFamily: "Inter, sans-serif", fontWeight: 700, fontSize: "13px", color: "#b33874", textTransform: "uppercase", letterSpacing: "0.08em", margin: "0 0 4px" }}>
                   {item.label}
                 </p>
-                <p style={{ fontFamily: "Inter, sans-serif", fontWeight: 400, fontSize: "16px", color: "#490652", margin: 0 }}>
-                  {item.value}
-                </p>
+                {item.isLink ? (
+                  <a href={item.href} target="_blank" rel="noopener noreferrer" style={{ fontFamily: "Inter, sans-serif", fontWeight: 400, fontSize: "16px", color: "#b33874", margin: 0, textDecoration: "underline" }}>
+                    {item.value}
+                  </a>
+                ) : (
+                  <p style={{ fontFamily: "Inter, sans-serif", fontWeight: 400, fontSize: "16px", color: "#490652", margin: 0 }}>
+                    {item.value}
+                  </p>
+                )}
               </div>
             ))}
           </div>

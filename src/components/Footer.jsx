@@ -69,17 +69,17 @@ const Footer = () => (
         <p style={{ fontFamily: "Inter, sans-serif", fontWeight: 600, fontSize: "clamp(15px, 1.2vw, 20px)", color: "rgba(255,245,243,0.85)", lineHeight: 1.6, margin: "0 0 32px", maxWidth: "300px" }}>
           Empowering individuals to grow, thrive, and live independently.
         </p>
-        {/* <div style={{ display: "flex", gap: "10px" }}>
+        <div style={{ display: "flex", gap: "10px" }}>
           {[
-            { href: "#", icon: <FacebookIcon />,  label: "Facebook" },
-            { href: "#", icon: <InstagramIcon />, label: "Instagram" },
-            { href: "#", icon: <LinkedInIcon />,  label: "LinkedIn" },
+            { href: "https://www.linkedin.com/company/tender-living-residence/?viewAsMember=true", icon: <LinkedInIcon />, label: "LinkedIn" },
+            { href: "https://www.facebook.com/share/18R9nytWu2/?mibextid=wwXIfr", icon: <FacebookIcon />, label: "Facebook" },
+            { href: "https://www.instagram.com/tenderlivingresidence?igsh=MXNsaHUyenpjazc4YQ%3D%3D&utm_source=qr", icon: <InstagramIcon />, label: "Instagram" },
           ].map(({ href, icon, label }) => (
-            <a key={label} href={href} aria-label={label} style={{ width: "38px", height: "38px", borderRadius: "10px", backgroundColor: "rgba(255,245,243,0.08)", border: "1px solid rgba(255,245,243,0.12)", display: "flex", alignItems: "center", justifyContent: "center", color: "rgba(255,245,243,0.65)", textDecoration: "none", flexShrink: 0 }}>
+            <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} style={{ width: "38px", height: "38px", borderRadius: "10px", backgroundColor: "rgba(255,245,243,0.08)", border: "1px solid rgba(255,245,243,0.12)", display: "flex", alignItems: "center", justifyContent: "center", color: "rgba(255,245,243,0.65)", textDecoration: "none", flexShrink: 0 }}>
               {icon}
             </a>
           ))}
-        </div> */}
+        </div>
       </div>
 
       {/* Company */}
