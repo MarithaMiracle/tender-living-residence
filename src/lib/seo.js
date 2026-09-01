@@ -5,7 +5,7 @@ export const SITE = {
   defaultTitle: "Tender Living Residence | Home Care & Supported Living UK",
   defaultDescription:
     "Tender Living Residence provides compassionate home care, supported living, and crisis support across the UK. CQC-regulated, person-centred care for adults and families.",
-  url: import.meta.env.VITE_SITE_URL?.replace(/\/$/, "") || "https://www.tlrs.co.uk",
+  url: (import.meta.env?.VITE_SITE_URL || process.env.VITE_SITE_URL || "https://www.tlrs.co.uk").replace(/\/$/, ""),
   email: "info@tlrs.co.uk",
   phone: "",
   locale: "en_GB",

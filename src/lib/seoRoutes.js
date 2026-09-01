@@ -1,5 +1,5 @@
-import { serviceGroups } from "../data/services";
-import { SITE, organizationSchema, websiteSchema, breadcrumbSchema } from "./seo";
+import { serviceGroups } from "../data/services.js";
+import { SITE, organizationSchema, websiteSchema, breadcrumbSchema } from "./seo.js";
 
 const HOME_DESCRIPTION =
   "Compassionate home care and supported living across the UK. CQC-regulated services including domiciliary care, live-in care, supported accommodation, and crisis support.";
