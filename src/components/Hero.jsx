@@ -11,7 +11,7 @@ const Hero = () => {
     <section id="home" style={{position: "relative", width: "100%", minHeight: "100vh", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center"}}>
 
       <div style={{position: "absolute", inset: 0, backgroundColor: "#D9D9D9"}}>
-        <img src="/hero-bg.jpg" alt="Hero background" style={{width: "100%", height: "100%", objectFit: "cover", objectPosition: "center"}} />
+        <img src="/hero-bg.jpg" alt="Caregiver supporting a client at home" fetchPriority="high" style={{width: "100%", height: "100%", objectFit: "cover", objectPosition: "center"}} />
       </div>
 
       <div style={{position: "absolute", inset: 0, background: "linear-gradient(178deg, rgba(255, 112, 72, 0.45) 5%, rgba(58, 5, 65, 0.79) 53%)"}} />

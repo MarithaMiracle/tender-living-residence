@@ -1,5 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { getGroupBySlug, getServiceBySlug } from "../data/services";
+import SEO from "../components/SEO";
+import { breadcrumbSchema, serviceSchema, truncate } from "../lib/seo";
 
 // ─── Orange section divider with lines ───────────────────────────────────────
 const SectionDivider = ({ title }) => (
@@ -189,9 +191,31 @@ const ServiceDetailPage = () => {
 
   const description = service.figmaDescription || service.description;
   const heroOverlay = group.slug === "accommodation-based-support" ? "#f06943" : "#490652";
+  const servicePath = `/services/${groupSlug}/${serviceSlug}`;
+  const pageDescription = truncate(service.tagline || description);
 
   return (
     <>
+      <SEO
+        title={service.title}
+        description={pageDescription}
+        path={servicePath}
+        image={service.heroPhoto || "/hero-bg.jpg"}
+        jsonLd={[
+          serviceSchema({
+            title: service.title,
+            description: pageDescription,
+            path: servicePath,
+            image: service.heroPhoto,
+          }),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Our Services", path: "/services" },
+            { name: group.title, path: `/services#${group.slug}` },
+            { name: service.title, path: servicePath },
+          ]),
+        ]}
+      />
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <section style={{
         position:   "relative",
@@ -203,7 +227,7 @@ const ServiceDetailPage = () => {
         {service.heroPhoto && (
           <img
             src={service.heroPhoto}
-            alt=""
+            alt={`${service.title} — ${service.tagline || "Tender Living Residence"}`}
             style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }}
           />
         )}

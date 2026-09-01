@@ -34,7 +34,7 @@ function PostCard({ post }) {
         {/* Cover */}
         <div style={{ height: "200px", overflow: "hidden", flexShrink: 0, position: "relative", backgroundColor: "#490652" }}>
           {post.cover_url ? (
-            <img src={post.cover_url} alt={post.title} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+            <img src={post.cover_url} alt={post.title} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
           ) : (
             <div style={{ width: "100%", height: "100%", background: "linear-gradient(135deg, #490652 0%, #b33874 100%)", display: "flex", alignItems: "center", justifyContent: "center" }}>
               <span style={{ fontSize: "48px", opacity: 0.3 }}>✦</span>

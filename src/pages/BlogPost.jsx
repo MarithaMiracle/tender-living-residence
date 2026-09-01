@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { supabase } from "../lib/supabase";
+import SEO from "../components/SEO";
+import { articleSchema, breadcrumbSchema, truncate } from "../lib/seo";
 
 function formatDate(iso) {
   return new Date(iso).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
@@ -98,19 +100,55 @@ const BlogPost = () => {
 
   if (notFound) {
     return (
-      <div style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", backgroundColor: "#fff5f3", gap: 16, padding: "80px 24px", textAlign: "center" }}>
+      <>
+        <SEO title="Article Not Found" description="This blog article could not be found." path={`/blog/${slug}`} noindex />
+        <div style={{ minHeight: "60vh", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", backgroundColor: "#fff5f3", gap: 16, padding: "80px 24px", textAlign: "center" }}>
         <p style={{ fontFamily: "Poppins, sans-serif", fontWeight: 700, fontSize: "24px", color: "#490652", margin: 0 }}>Article not found</p>
         <Link to="/blog" style={{ fontFamily: "Inter, sans-serif", fontWeight: 600, fontSize: "15px", color: "#b33874" }}>← Back to Blog</Link>
-      </div>
+        </div>
+      </>
     );
   }
 
+  const postPath = `/blog/${post.slug}`;
+  const postDescription = truncate(post.excerpt || post.content?.slice(0, 160));
+
   return (
     <>
+      <SEO
+        title={post.title}
+        description={postDescription}
+        path={postPath}
+        image={post.cover_url || "/hero-bg.jpg"}
+        type="article"
+        article={{
+          publishedTime: post.created_at,
+          modifiedTime: post.updated_at || post.created_at,
+          author: post.author || "Tender Living Residence",
+          section: post.category,
+        }}
+        jsonLd={[
+          articleSchema({
+            title: post.title,
+            description: postDescription,
+            path: postPath,
+            image: post.cover_url,
+            author: post.author,
+            datePublished: post.created_at,
+            dateModified: post.updated_at || post.created_at,
+            category: post.category,
+          }),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Blog", path: "/blog" },
+            { name: post.title, path: postPath },
+          ]),
+        ]}
+      />
       {/* Hero */}
       <section style={{ position: "relative", minHeight: "340px", display: "flex", alignItems: "flex-end", overflow: "hidden", backgroundColor: "#490652" }}>
         {post.cover_url && (
-          <img src={post.cover_url} alt={post.title} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
+          <img src={post.cover_url} alt={post.title} fetchPriority="high" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
         )}
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(0deg, rgba(73,6,82,0.92) 0%, rgba(73,6,82,0.45) 60%, transparent 100%)" }} />
         <div style={{ position: "relative", zIndex: 1, width: "100%", maxWidth: 860, margin: "0 auto", padding: "clamp(40px,5vw,80px) clamp(16px,4vw,40px) 48px" }}>
@@ -161,7 +199,7 @@ const BlogPost = () => {
                   <div style={{ backgroundColor: "#fff5f3", borderRadius: "16px", overflow: "hidden", display: "flex", flexDirection: "column" }}>
                     <div style={{ height: 140, backgroundColor: "#490652", flexShrink: 0, overflow: "hidden" }}>
                       {r.cover_url
-                        ? <img src={r.cover_url} alt={r.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                        ? <img src={r.cover_url} alt={r.title} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                         : <div style={{ width: "100%", height: "100%", background: "linear-gradient(135deg,#490652,#b33874)" }} />
                       }
                     </div>

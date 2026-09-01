@@ -235,7 +235,7 @@ const OurServicesPage = () => {
       {/* ═══ HERO ═══════════════════════════════════════════════════════════ */}
       <section style={{ position: "relative", overflow: "hidden", background: "#2b0232", minHeight: "clamp(500px,70vh,760px)", display: "flex", alignItems: "center" }}>
         <div className="shp" style={{ position: "absolute", inset: 0 }}>
-          <img src={BANNER} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }} />
+          <img src={BANNER} alt="Tender Living Residence supported care services" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top" }} />
         </div>
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right,#2b0232 0%,#3d0448 28%,rgba(61,4,72,0.82) 50%,rgba(61,4,72,0.42) 68%,rgba(43,2,50,0.65) 85%,#2b0232 100%)", pointerEvents: "none" }} />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom,rgba(43,2,50,0.55) 0%,transparent 18%,transparent 72%,rgba(43,2,50,0.55) 100%)", pointerEvents: "none" }} />
@@ -441,7 +441,7 @@ const OurServicesPage = () => {
                   }}>
                     <div style={{ width: "clamp(52px,5vw,64px)", height: "clamp(52px,5vw,64px)", borderRadius: "50%", position: "relative", flexShrink: 0 }}>
                       <img src={ELLIPSE24} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "contain" }} />
-                      <img src={src.icon} alt="" style={{ position: "absolute", inset: 0, margin: "auto", width: "54%", height: "54%", objectFit: "contain", transform: src.flip ? "scaleY(-1)" : "none" }} />
+                      <img src={src.icon} alt={src.label || "Referral step icon"} style={{ position: "absolute", inset: 0, margin: "auto", width: "54%", height: "54%", objectFit: "contain", transform: src.flip ? "scaleY(-1)" : "none" }} />
                     </div>
                     <p style={{ fontFamily: "Poppins, sans-serif", fontWeight: 600, fontSize: "clamp(13px,1.2vw,17px)", color: "#2b0232", margin: 0, lineHeight: 1.35, whiteSpace: "pre-line" }}>{src.label}</p>
                   </div>

@@ -90,6 +90,9 @@ const AssessmentPage = () => {
   return (
     <div style={{ backgroundColor: "#FFF5F3", minHeight: "80vh", padding: "80px 20px" }}>
       <div style={{ maxWidth: "600px", margin: "0 auto", backgroundColor: "white", borderRadius: "20px", padding: "40px", boxShadow: "0 10px 30px rgba(73,6,82,0.08)" }}>
+        <h1 style={{ fontFamily: "Poppins, sans-serif", fontSize: "clamp(24px, 3vw, 32px)", color: "#490652", margin: "0 0 24px", textAlign: "center" }}>
+          Care Needs Assessment
+        </h1>
         
         {/* Progress Bar */}
         {step < QUESTIONS.length && (

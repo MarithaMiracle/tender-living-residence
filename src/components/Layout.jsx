@@ -3,6 +3,8 @@ import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Chatbot from "./Chatbot";
+import RouteSEO from "./RouteSEO";
+import Analytics from "./Analytics";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -12,9 +14,14 @@ function ScrollToTop() {
 
 const Layout = () => (
   <>
+    <a href="#main-content" className="skip-link">Skip to main content</a>
+    <RouteSEO />
+    <Analytics />
     <ScrollToTop />
     <Navbar />
-    <Outlet />
+    <main id="main-content">
+      <Outlet />
+    </main>
     <Footer />
     {/* CQC Regulated Care Tag - stationary on all pages */}
     <a href="https://www.cqc.org.uk/location/1-23695436535" target="_blank" rel="noopener noreferrer" style={{

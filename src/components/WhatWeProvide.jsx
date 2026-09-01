@@ -29,7 +29,7 @@ const WhatWeProvide = () => {
             <Link to="/services/home-based-care/domiciliary-care" style={{ textDecoration: "none", display: "flex" }}>
               <div style={{ backgroundColor: "#FFE5F0", borderRadius: "80px 80px 0 0", overflow: "hidden", position: "relative", paddingBottom: "36px", cursor: "pointer", display: "flex", flexDirection: "column", width: "100%" }}>
                 <div style={{ overflow: "hidden", height: "280px", flexShrink: 0 }}>
-                  <img src="/home-care.jpg" alt="Home-Based Care" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                  <img src="/home-care.jpg" alt="Home-Based Care" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 </div>
                 <div style={{ width: "40px", height: "40px", backgroundColor: "#F06943", borderRadius: "50%", position: "absolute", top: "260px", left: "36px" }} />
                 <div style={{ padding: "44px 36px 0", flex: 1, display: "flex", flexDirection: "column" }}>
@@ -51,7 +51,7 @@ const WhatWeProvide = () => {
             <Link to="/services" style={{ textDecoration: "none", display: "flex" }}>
               <div style={{ backgroundColor: "#FFE5F0", borderRadius: "80px 80px 0 0", overflow: "hidden", position: "relative", paddingBottom: "36px", cursor: "pointer", display: "flex", flexDirection: "column", width: "100%" }}>
                 <div style={{ overflow: "hidden", height: "280px", flexShrink: 0 }}>
-                  <img src="/accommodation.jpg" alt="Accommodation-Based Support" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                  <img src="/accommodation.jpg" alt="Accommodation-Based Support" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 </div>
                 <div style={{ width: "40px", height: "40px", backgroundColor: "#F06943", borderRadius: "50%", position: "absolute", top: "260px", left: "36px" }} />
                 <div style={{ padding: "44px 36px 0", flex: 1, display: "flex", flexDirection: "column" }}>
