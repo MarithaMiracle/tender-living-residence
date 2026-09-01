@@ -30,7 +30,7 @@
         }
     ],
     "rewrites": [{
-        "source": "/((?!assets/|robots\\.txt|sitemap\\.xml|.*\\.(html|png|jpg|jpeg|gif|webp|svg|ico|woff2?|css|js|map)$).*)",
+        "source": "/(.*)",
         "destination": "/index.html"
     }]
 }
