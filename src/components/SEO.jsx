@@ -21,7 +21,7 @@ export default function SEO({
 
   return (
     <Helmet>
-      <html lang={SITE.language.split("-")[0]} />
+      <html lang={SITE.language} />
       <title>{pageTitle}</title>
       <meta name="description" content={pageDescription} />
       <link rel="canonical" href={canonical} />

@@ -109,10 +109,8 @@ function renderSeoHead({
 
 function injectIntoHtml(baseHtml, seoHead) {
   const cleaned = baseHtml.replace(/\s*<title>[\s\S]*?<\/title>/i, "");
-  return cleaned.replace(
-    "</head>",
-    `    ${seoHead}\n</head>`,
-  ).replace("<html", `<html lang="${SITE.language.split("-")[0]}"`);
+  const withLang = cleaned.replace(/<html[^>]*>/i, `<html lang="${SITE.language}">`);
+  return withLang.replace("</head>", `    ${seoHead}\n</head>`);
 }
 
 function routeToFile(route) {
