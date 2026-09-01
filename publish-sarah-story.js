@@ -1,8 +1,33 @@
 import { createClient } from '@supabase/supabase-js';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-// Credentials from your .env
-const SUPABASE_URL = 'https://whdmwhslbsvrqreohauv.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndoZG13aHNsYnN2cnFyZW9oYXV2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg0ODUxMTUsImV4cCI6MjA5NDA2MTExNX0.VarTi1n5mlA5CnGxiQQ39UsvhDeWy9cWrtvXjpU81WE';
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+function loadEnv() {
+  const envPath = path.join(__dirname, '.env');
+  if (!fs.existsSync(envPath)) return;
+  for (const line of fs.readFileSync(envPath, 'utf8').split('\n')) {
+    const trimmed = line.trim().replace(/^export\s+/, '');
+    if (!trimmed || trimmed.startsWith('#')) continue;
+    const eq = trimmed.indexOf('=');
+    if (eq === -1) continue;
+    const key = trimmed.slice(0, eq).trim();
+    const value = trimmed.slice(eq + 1).split('#')[0].trim();
+    if (!process.env[key]) process.env[key] = value;
+  }
+}
+
+loadEnv();
+
+const SUPABASE_URL = process.env.VITE_SUPABASE_URL;
+const SUPABASE_KEY = process.env.VITE_SUPABASE_ANON_KEY;
+
+if (!SUPABASE_URL || !SUPABASE_KEY) {
+  console.error('Missing VITE_SUPABASE_URL or VITE_SUPABASE_ANON_KEY in .env');
+  process.exit(1);
+}
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
