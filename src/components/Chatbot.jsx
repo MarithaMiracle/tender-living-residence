@@ -9,7 +9,7 @@ Our Services:
 - Live-In Care: 24-hour dedicated support at home. Link: /services/home-based-care/live-in-care
 - Complex Care: Clinical support (PEG, Tracheostomy, etc.). Link: /services/home-based-care/complex-care
 - Companionship Care: Emotional support, social interaction, and reassurance. Link: /services/home-based-care/companionship-care
-- Home-Based Respite: Planned relief for carers. Link: /services/home-based-care/home-based-respite
+- Respite Care: Planned relief for carers. Link: /services/home-based-care/home-based-respite
 
 2. Accommodation-Based Support:
 - Supported Living: Tenancy-focused support to build independence. Link: /services/accommodation-based-support/supported-living

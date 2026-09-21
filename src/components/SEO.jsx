@@ -11,7 +11,9 @@ export default function SEO({
   jsonLd = [],
   article,
 }) {
-  const pageTitle = title?.includes(SITE.name) ? title : buildTitle(title);
+  const pageTitle =
+    !title ? SITE.defaultTitle
+    : (title.includes(SITE.name) || title.includes(" | ") ? title : buildTitle(title));
   const pageDescription = truncate(description || SITE.defaultDescription);
   const canonical = absoluteUrl(path);
   const ogImage = absoluteAssetUrl(image || SITE.defaultOgImage);

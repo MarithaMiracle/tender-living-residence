@@ -1,0 +1,17 @@
+export const WEST_MIDLANDS_AREAS = [
+  "Sandwell",
+  "Dudley Borough",
+  "Walsall Borough",
+  "Wolverhampton",
+  "Solihull Borough",
+  "Coventry",
+  "Nuneaton & Bedworth",
+  "North Warwickshire",
+  "Warwick Area",
+  "Rugby Area",
+  "Stratford-upon-Avon Area",
+  "Redditch Area",
+  "Bromsgrove Area",
+  "Worcester Area",
+  "Wychavon",
+];

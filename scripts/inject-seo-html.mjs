@@ -54,7 +54,9 @@ function renderSeoHead({
   jsonLd = [],
   article,
 }) {
-  const pageTitle = title?.includes(SITE.name) ? title : buildTitle(title);
+  const pageTitle =
+    !title ? SITE.defaultTitle
+    : (title.includes(SITE.name) || title.includes(" | ") ? title : buildTitle(title));
   const pageDescription = escapeHtml(truncate(description || SITE.defaultDescription));
   const canonical = escapeHtml(absoluteUrl(path));
   const ogImage = escapeHtml(absoluteAssetUrl(image || SITE.defaultOgImage));
@@ -123,11 +125,13 @@ function getServiceSeoConfigs() {
   for (const group of serviceGroups) {
     for (const service of group.services) {
       const servicePath = `/services/${group.slug}/${service.slug}`;
-      const pageDescription = truncate(service.tagline || service.figmaDescription || service.description);
+      const pageDescription = truncate(
+        service.metaDescription || service.tagline || service.figmaDescription || service.description,
+      );
       configs.push({
         route: servicePath,
         seo: {
-          title: service.title,
+          title: service.metaTitle || service.title,
           description: pageDescription,
           path: servicePath,
           image: service.heroPhoto || "/hero-bg.jpg",
