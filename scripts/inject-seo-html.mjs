@@ -109,15 +109,107 @@ function renderSeoHead({
   return lines.join("\n    ");
 }
 
-function injectIntoHtml(baseHtml, seoHead) {
+function injectIntoHtml(baseHtml, seoHead, bodyHtml = "") {
   const cleaned = baseHtml.replace(/\s*<title>[\s\S]*?<\/title>/i, "");
   const withLang = cleaned.replace(/<html[^>]*>/i, `<html lang="${SITE.language}">`);
-  return withLang.replace("</head>", `    ${seoHead}\n</head>`);
+  let html = withLang.replace("</head>", `    ${seoHead}\n</head>`);
+  if (bodyHtml) {
+    html = html.replace(
+      '<div id="root"></div>',
+      `<div id="root"></div>\n    <main id="seo-static-content">${bodyHtml}</main>\n    <script>document.addEventListener("DOMContentLoaded",function(){var r=document.getElementById("root");var s=document.getElementById("seo-static-content");if(r&&s&&r.childElementCount>0){s.setAttribute("hidden","");}});</script>`,
+    );
+  }
+  return html;
 }
 
 function routeToFile(route) {
   if (route === "/") return path.join(distDir, "index.html");
   return path.join(distDir, `${route.slice(1)}.html`);
+}
+
+function buildServiceBodyHtml(group, service) {
+  const parts = [];
+  const h1 = escapeHtml(service.heroTitle || service.title);
+  const intro = escapeHtml(service.figmaDescription || service.description || "");
+  parts.push(`<h1>${h1}</h1>`);
+  if (service.tagline) parts.push(`<p>${escapeHtml(service.tagline)}</p>`);
+  for (const para of intro.split("\n\n").filter(Boolean)) {
+    parts.push(`<p>${para}</p>`);
+  }
+
+  parts.push(`<nav aria-label="Internal links"><ul>
+    <li><a href="/services">Our Services</a></li>
+    <li><a href="/contact">Contact Us</a></li>
+    <li><a href="/assessment">Care Needs Assessment</a></li>
+    <li><a href="/cqc-regulated">CQC Regulated</a></li>
+    <li><a href="/about">About Us</a></li>
+  </ul></nav>`);
+
+  for (const section of service.sections || []) {
+    parts.push(`<h2>${escapeHtml(section.heading)}</h2>`);
+    if (section.layout === "text" && section.text) {
+      for (const para of section.text.split("\n\n").filter(Boolean)) {
+        parts.push(`<p>${escapeHtml(para)}</p>`);
+      }
+    }
+    if (section.layout === "bullets") {
+      if (section.intro) parts.push(`<p>${escapeHtml(section.intro)}</p>`);
+      parts.push("<ul>");
+      for (const item of section.items || []) {
+        parts.push(`<li>${escapeHtml(typeof item === "string" ? item : item.title)}</li>`);
+      }
+      parts.push("</ul>");
+      if (section.outro) parts.push(`<p>${escapeHtml(section.outro)}</p>`);
+    }
+    if (section.layout === "process") {
+      for (const step of section.steps || []) {
+        parts.push(`<h3>${escapeHtml(step.title)}</h3>`);
+        parts.push(`<p>${escapeHtml(step.body)}</p>`);
+      }
+    }
+    if (section.layout === "grid3" || section.layout === "grid4" || section.layout === "grid2-icon-right") {
+      parts.push("<ul>");
+      for (const item of section.items || []) {
+        parts.push(`<li><h3>${escapeHtml(item.title)}</h3></li>`);
+      }
+      parts.push("</ul>");
+    }
+    if (section.layout === "areas") {
+      if (section.intro) parts.push(`<p>${escapeHtml(section.intro)}</p>`);
+      parts.push("<ul>");
+      for (const area of section.items || []) parts.push(`<li>${escapeHtml(area)}</li>`);
+      parts.push("</ul>");
+    }
+    if (section.layout === "faq") {
+      for (const faq of section.items || []) {
+        parts.push(`<h3>${escapeHtml(faq.question)}</h3>`);
+        parts.push(`<p>${escapeHtml(faq.answer)}</p>`);
+      }
+    }
+    if (section.layout === "cta") {
+      if (section.intro) parts.push(`<p>${escapeHtml(section.intro)}</p>`);
+      parts.push(`<p><a href="/contact">Contact Us</a> · <a href="/assessment">Care Needs Assessment</a> · <a href="/services">All Services</a></p>`);
+      if (section.outro) parts.push(`<p>${escapeHtml(section.outro)}</p>`);
+    }
+  }
+
+  const related = (group.services || []).filter((s) => s.slug !== service.slug);
+  if (related.length) {
+    parts.push("<h2>Related Services</h2><ul>");
+    for (const s of related) {
+      parts.push(`<li><h3><a href="/services/${group.slug}/${s.slug}">${escapeHtml(s.title)}</a></h3><p>${escapeHtml(s.tagline || "")}</p></li>`);
+    }
+    parts.push("</ul>");
+  }
+
+  parts.push(`<h2>More Ways We Support</h2><ul>
+    <li><a href="/services">Our Services</a></li>
+    <li><a href="/about">About Us</a></li>
+    <li><a href="/cqc-regulated">CQC Regulated Care</a></li>
+    <li><a href="/blog">Blog</a></li>
+  </ul>`);
+
+  return parts.join("\n");
 }
 
 function getServiceSeoConfigs() {
@@ -128,8 +220,10 @@ function getServiceSeoConfigs() {
       const pageDescription = truncate(
         service.metaDescription || service.tagline || service.figmaDescription || service.description,
       );
+      const faqItems = (service.sections || []).find((s) => s.layout === "faq")?.items || [];
       configs.push({
         route: servicePath,
+        bodyHtml: buildServiceBodyHtml(group, service),
         seo: {
           title: service.metaTitle || service.title,
           description: pageDescription,
@@ -148,6 +242,17 @@ function getServiceSeoConfigs() {
               { name: group.title, path: `/services#${group.slug}` },
               { name: service.title, path: servicePath },
             ]),
+            faqItems.length
+              ? {
+                  "@context": "https://schema.org",
+                  "@type": "FAQPage",
+                  mainEntity: faqItems.map(({ question, answer }) => ({
+                    "@type": "Question",
+                    name: question,
+                    acceptedAnswer: { "@type": "Answer", text: answer },
+                  })),
+                }
+              : null,
           ],
         },
       });
@@ -225,8 +330,8 @@ async function main() {
     ...(await getBlogSeoConfigs()),
   ];
 
-  for (const { route, seo } of pageConfigs) {
-    const html = injectIntoHtml(baseHtml, renderSeoHead(seo));
+  for (const { route, seo, bodyHtml } of pageConfigs) {
+    const html = injectIntoHtml(baseHtml, renderSeoHead(seo), bodyHtml);
     const outFile = routeToFile(route);
     fs.mkdirSync(path.dirname(outFile), { recursive: true });
     fs.writeFileSync(outFile, html);
