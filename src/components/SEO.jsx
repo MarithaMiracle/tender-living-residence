@@ -17,7 +17,6 @@ export default function SEO({
   const pageDescription = truncate(description || SITE.defaultDescription);
   const canonical = absoluteUrl(path);
   const ogImage = absoluteAssetUrl(image || SITE.defaultOgImage);
-  const gscVerification = import.meta.env.VITE_GSC_VERIFICATION?.trim();
 
   const schemas = Array.isArray(jsonLd) ? jsonLd.filter(Boolean) : jsonLd ? [jsonLd] : [];
 
@@ -58,8 +57,6 @@ export default function SEO({
       )}
       {article?.author && <meta property="article:author" content={article.author} />}
       {article?.section && <meta property="article:section" content={article.section} />}
-
-      {gscVerification && <meta name="google-site-verification" content={gscVerification} />}
 
       {schemas.map((schema, index) => (
         <script key={index} type="application/ld+json">

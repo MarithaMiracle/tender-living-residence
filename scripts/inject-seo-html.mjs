@@ -61,7 +61,6 @@ function renderSeoHead({
   const canonical = escapeHtml(absoluteUrl(path));
   const ogImage = escapeHtml(absoluteAssetUrl(image || SITE.defaultOgImage));
   const safeTitle = escapeHtml(pageTitle);
-  const gscVerification = process.env.VITE_GSC_VERIFICATION?.trim();
 
   const lines = [
     `<title>${safeTitle}</title>`,
@@ -97,9 +96,6 @@ function renderSeoHead({
   }
   if (article?.section) {
     lines.push(`<meta property="article:section" content="${escapeHtml(article.section)}" />`);
-  }
-  if (gscVerification) {
-    lines.push(`<meta name="google-site-verification" content="${escapeHtml(gscVerification)}" />`);
   }
 
   for (const schema of jsonLd.filter(Boolean)) {
